@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Limchayseng.com 
-subtitle: Hi, im Ethan Limchayseng
-description: Hi there - my name is Ethan, and welcome to my blog. I use it to work on my writing skills as well as post about things that are tech and fitness related that I think are interesting. One constant thread will be my running thoughts, which you can find more details about in the first Running Thoughts post linked in the nav bar.
+title: Hexo
+subtitle: ''
+description: ''
 keywords:
-author: Ethan Limchayseng
+author: John Doe
 language: en
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://limchayseng.com
+url: http://example.com
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: false
 future: true
 highlight:
@@ -101,7 +101,5 @@ theme: hexo-theme-cactus
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: heroku
-  repo: https://git.heroku.com/limchayseng-blog.git
-  message: "{{ now('YYYY-MM-DD HH:mm:ss') }}"
+deploy: 
+

@@ -1,7 +1,7 @@
 ---
 title: First Post
 date: 2022-02-10 16:10:36
-tags: blog, about
+tags: [blog, about]
 ---
 # Starting this Blog 
 
@@ -14,5 +14,4 @@ As an effort to start exploring a bit more of my creative side, I've decided to 
 
 Looking forward to see how this will develop! 
 
-{% asset_img IMG_6132.jpeg Vail_CO %}
 

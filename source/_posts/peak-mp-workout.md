@@ -1,7 +1,7 @@
 ---
 title: The Peak Marathon Workout ⛰
 date: 2022-02-10 21:21:53
-tags: running, marathon, boston, fitness
+tags: [running, marathon, boston, fitness]
 ---
 
 # My Peak Marathon Workout 
@@ -14,7 +14,7 @@ Paul is an amazing runner - he has an incredible marathon PB, but what also make
 
 We crushed the 22 miles and hit our paces perfectly, and even a little bit below target. For our final two miles, we closed at a 6:20 and a 5:59 which I'm very proud of. With this workout behind me, I know I'm ready to break 3hrs and qualify for the Boston Marathon at the Ventura Marathon this February 27th.
 
-The confidence gained from this workout has infected the rest of my runs so far as my training block comes to an end. I feel light on my feet and strong in my legs. These kind of benchmarks are invaluable in the athlete's toolbox because they truely make you feel that your limits are elastic - you can feel yourself grow. I'm trying to carry that into the rest of my life and work too. 
+The confidence gained from this workout has infected the rest of my runs so far as my training block comes to an end. I feel light on my feet and strong in my legs. These kind of benchmarks are invaluable in the athlete's toolbox because they truly make you feel that your limits are elastic - you can feel yourself grow. I'm trying to carry that into the rest of my life and work too. 
 
 # The Workout 
 | Mile |Pace | Effort |

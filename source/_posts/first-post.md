@@ -1,7 +1,7 @@
 ---
 title: First Post
 date: 2022-02-10 16:10:36
-tags:
+tags: blog, about
 ---
 # Starting this Blog 
 
@@ -13,6 +13,4 @@ As an effort to start exploring a bit more of my creative side, I've decided to 
 4. Integrate my fitness/running/cycling passion into all of the above to generate some hopefully interesting content 
 
 Looking forward to see how this will develop! 
-
-<iframe height='405' width='590' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/activities/6640979528/embed/782da29b708db80aa51579a4d0388a8222d1af70'></iframe>
 

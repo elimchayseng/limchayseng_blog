@@ -1,7 +1,7 @@
 ---
 title: The Peak Marathon Workout ⛰
 date: 2022-02-10 21:21:53
-tags:
+tags: running, marathon, boston, fitness
 ---
 
 # My Peak Marathon Workout 

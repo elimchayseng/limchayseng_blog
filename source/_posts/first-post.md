@@ -14,3 +14,5 @@ As an effort to start exploring a bit more of my creative side, I've decided to 
 
 Looking forward to see how this will develop! 
 
+{% asset_img IMG_6132.jpeg Vail_CO %}
+

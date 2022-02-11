@@ -14,5 +14,5 @@ As an effort to start exploring a bit more of my creative side, I've decided to 
 
 Looking forward to see how this will develop! 
 
-
+<iframe height='405' width='590' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/activities/6640979528/embed/782da29b708db80aa51579a4d0388a8222d1af70'></iframe>
 

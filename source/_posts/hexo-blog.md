@@ -22,3 +22,8 @@ When you go to deploy, you can use the `hexo deploy` command, but given the publ
 There's luckily some 3rd party packages that handle the behind the scenes work to make sure those files come through. Through digging they basically run a script that does `hexo generate` and `hexo server` to get your files generated in your remote repo. For the npm `hexo-deployer-heroku` package weirdly enough, it utilizes the PHP (???) buildpack and Procfile to build a PHP Heroku app that then runs your node.js Hexo package blog. I felt like I was taking crazy pills trying to piece together how all these pieces intertwined. 
 
 At the time of this writing, I'm using that process above just because it's easy to use hexo deploy and automatically push a heroku build, PHP or otherwise. I'll look to improve my knowledge of how this works to hopefully make it easier on myself to keep constant deployments and clean up a bit of jumbled process. 
+
+### 2-11-22 Update: 
+
+After digging, I figured out how to do a more simple and controlled deployment. It's less automated, but I have a branch of my git repo that represents my heroku-host version of my blog, which is ONLY the public folder, the package.json dependencies, and the heroku Procfile. The procfile only contains the 1  command: `web: npm run-script server` and references the package.json file which has the script: `server: hexo server -p $PORT` Just this combo of files and commands will serve the the blog on the app without all the different looping hurdles. Now I simply push my updated public file from my computer to my Heroku branch, and its automatically built through heroku's automated deployments. This way is much more simple and direct in my opinion. 
+

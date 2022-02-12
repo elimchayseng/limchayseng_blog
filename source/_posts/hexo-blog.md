@@ -26,4 +26,3 @@ At the time of this writing, I'm using that process above just because it's easy
 ### 2-11-22 Update: 
 
 After digging, I figured out how to do a more simple and controlled deployment. It's less automated, but I have a branch of my git repo that represents my heroku-host version of my blog, which is ONLY the public folder, the package.json dependencies, and the heroku Procfile. The procfile only contains the 1  command: `web: npm run-script server` and references the package.json file which has the script: `server: hexo server -p $PORT` Just this combo of files and commands will serve the the blog on the app without all the different looping hurdles. Now I simply push my updated public file from my computer to my Heroku branch, and its automatically built through heroku's automated deployments. This way is much more simple and direct in my opinion. 
-

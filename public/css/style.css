@@ -1062,9 +1062,9 @@ body {
 .project-list .project-item p {
   display: inline;
 }
-.about {
-  margin-bottom: -25px;
+.title {
   padding: 0;
+  margin-top: -25px;
 }
 article header .posttitle {
   margin-top: 0;

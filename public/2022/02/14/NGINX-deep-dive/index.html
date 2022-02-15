@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://limchayseng.com/2022/02/14/NGINX-deep-dive/NGINX_diag.png">
 <meta property="og:image" content="https://limchayseng.com/2022/02/14/NGINX-deep-dive/proxy_pic.png">
 <meta property="article:published_time" content="2022-02-14T20:59:50.000Z">
-<meta property="article:modified_time" content="2022-02-14T21:30:50.975Z">
+<meta property="article:modified_time" content="2022-02-14T22:56:28.352Z">
 <meta property="article:author" content="Ethan Limchayseng">
 <meta property="article:tag" content="NGINX">
 <meta property="article:tag" content="networking">
@@ -82,6 +82,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/02/15/deploy-lambda-aws-sam/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" aria-label="Next post" href="/2022/02/12/mern-course/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -170,7 +172,7 @@
 <p>You can also run NGINX as a regular web server as well to serve static content like images and HTML.</p>
 <h3 id="2-What-does-it-do"><a href="#2-What-does-it-do" class="headerlink" title="2. What does it do?"></a>2. What does it do?</h3><p>There are 4 primary use cases of an NGINX (or any reverse-proxy) server:</p>
 <ul>
-<li><p><strong>Load-balancing:</strong> Having the web-server sitting in front of your app servers (or pods, etc) allow for logic to be performed on the incoming requests that can manage the load coming from clients. Depending on which Layer you’re routing from (Layer 4 – cant read&#x2F;write HTTP data package contents, Layer 7 can), load balancing such as round-robin, least connections (server that has the lower number of current requests), and server response time. Layer 7 can inspect the data package and make decisions based on cookies, source IP persistence (knowing which user is who based on IP).</p>
+<li><p><strong>Load-balancing:</strong> Having the web-server sitting in front of your app servers (or pods, etc) allow for logic to be performed on the incoming requests that can manage the load coming from clients. Depending on which Layer you’re routing from (Layer 4 – cant read&#x2F;write HTTP data package contents, Layer 7 can), load balancing such as round-robin, least connections (server that has the lower number of current requests), and server response time. Layer 7 can inspect the data package and make decisions based on cookies and source IP persistence (knowing which user is who based on IP).</p>
 </li>
 <li><p><strong>Back-end Routing:</strong> Similar to load-balancing, you can direct traffic to specific app servers based on the request. An example of this would be: as Heroku user on a multi-tenant runtime, I need to have requests to my app routed to a specific instance&#x2F;container (dyno) that’s running my actual application. Therefore, there needs to be a router, the NGINX web server in this case, in place to direct incoming traffic to my app to my specific server resources in the Heroku runtime.</p>
 </li>

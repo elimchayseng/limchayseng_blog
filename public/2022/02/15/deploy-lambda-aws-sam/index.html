@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Lambda Basics - SAM + DeploymentsWhat’s SAM? Its a Serverless Application Model (SAM), and what it does at a very high level is allow you to write your code locally, build, and deploy your serverless">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build and Deploy a Serverless Lambda Function with AWS SAM">
+<meta property="og:url" content="https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/index.html">
+<meta property="og:site_name" content="Limchayseng.com">
+<meta property="og:description" content="Lambda Basics - SAM + DeploymentsWhat’s SAM? Its a Serverless Application Model (SAM), and what it does at a very high level is allow you to write your code locally, build, and deploy your serverless">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_CloudFormation.ad3a4c93b4fdd3366da3da0de4fb084d89a5d761.png">
+<meta property="og:image" content="https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/aws_sam_app_console.png">
+<meta property="og:image" content="https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/sam_app_postman_200.png">
+<meta property="article:published_time" content="2022-02-15T19:09:35.000Z">
+<meta property="article:modified_time" content="2022-02-15T19:29:37.376Z">
+<meta property="article:author" content="Ethan Limchayseng">
+<meta property="article:tag" content="aws">
+<meta property="article:tag" content="Lambda">
+<meta property="article:tag" content="Serverless">
+<meta property="article:tag" content="SAM">
+<meta property="article:tag" content="s3">
+<meta property="article:tag" content="CloudFormation">
+<meta property="article:tag" content="nodejs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_CloudFormation.ad3a4c93b4fdd3366da3da0de4fb084d89a5d761.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Build and Deploy a Serverless Lambda Function with AWS SAM</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/elimchayseng">Projects</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://www.limchayseng.com/tags/running-thoughts/">running-thoughts</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/02/14/NGINX-deep-dive/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&text=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&is_video=false&description=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Build and Deploy a Serverless Lambda Function with AWS SAM&body=Check out this article: https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&name=Build and Deploy a Serverless Lambda Function with AWS SAM&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&t=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lambda-Basics-SAM-Deployments"><span class="toc-number">1.</span> <span class="toc-text">Lambda Basics - SAM + Deployments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-1-INITIALIZE"><span class="toc-number">1.0.1.</span> <span class="toc-text">STEP 1: INITIALIZE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-2-WRITE"><span class="toc-number">1.0.2.</span> <span class="toc-text">STEP 2: WRITE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-3-BUILD"><span class="toc-number">1.0.3.</span> <span class="toc-text">STEP 3: BUILD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-4-PACKAGE"><span class="toc-number">1.0.4.</span> <span class="toc-text">STEP 4: PACKAGE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-5-DEPLOY"><span class="toc-number">1.0.5.</span> <span class="toc-text">STEP 5: DEPLOY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-6-RUN"><span class="toc-number">1.0.6.</span> <span class="toc-text">STEP 6: RUN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Links-and-References"><span class="toc-number">1.0.7.</span> <span class="toc-text">Links and References:</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Build and Deploy a Serverless Lambda Function with AWS SAM
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Ethan Limchayseng</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-02-15T19:09:35.000Z" itemprop="datePublished">2022-02-15</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/CloudFormation/" rel="tag">CloudFormation</a>, <a class="tag-link-link" href="/tags/Lambda/" rel="tag">Lambda</a>, <a class="tag-link-link" href="/tags/SAM/" rel="tag">SAM</a>, <a class="tag-link-link" href="/tags/Serverless/" rel="tag">Serverless</a>, <a class="tag-link-link" href="/tags/aws/" rel="tag">aws</a>, <a class="tag-link-link" href="/tags/nodejs/" rel="tag">nodejs</a>, <a class="tag-link-link" href="/tags/s3/" rel="tag">s3</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Lambda-Basics-SAM-Deployments"><a href="#Lambda-Basics-SAM-Deployments" class="headerlink" title="Lambda Basics - SAM + Deployments"></a>Lambda Basics - SAM + Deployments</h1><p>What’s SAM? Its a Serverless Application Model (SAM), and what it does at a very high level is allow you to write your code locally, build, and deploy your serverless function code and run it on AWS.</p>
+<p>It takes the actual function code (say Javascript), and then packages and deploys the 1-N serverless functions you’ve written. The SAM app also bundles up all the associated infrastructure needed to be able to run on AWS.</p>
+<p>To deploy your SAM app and function, there are some hoops that you need to jump through, and so the recipe is as follows:</p>
+<ol>
+<li><strong>Initialize</strong>: Start with a clean directory and initialize a SAM environment through the AWS CLI and using AWS Templates</li>
+<li><strong>Write</strong>: Write your actual Function Code in conjunction with configs established in the <code>template.yaml</code> file</li>
+<li><strong>Build</strong>: Build your SAM application - which is an application that houses your serverless function you want to run as well as all of the configs necessary to deploy it to AWS</li>
+<li><strong>Package</strong>: Package the Application following AWS rules, which creates an output template .yml file and then automatically uploads that file and the app to a S3 Bucket you’ve created</li>
+<li><strong>Deploy</strong>: Deploy your SAM Application to Cloud Formation: This grabs the that outputted .yml file from the S3 bucket and builds a “Stack” which is now contains your deployed functions and is live in AWS</li>
+<li><strong>RUN</strong>: Your application and functions are now deployed and available through AWS. You can invoke the function using whatever method you choose - web app, aws cli, HTTP requests, or Postman.</li>
+</ol>
+<p>You can find applicable code to this project <a target="_blank" rel="noopener" href="https://github.com/elimchayseng/sample-aws-SAM-app">here on my Github</a>.</p>
+<h3 id="STEP-1-INITIALIZE"><a href="#STEP-1-INITIALIZE" class="headerlink" title="STEP 1: INITIALIZE"></a>STEP 1: INITIALIZE</h3><p>Initialize a local repository to import files (from AWS templates) needed to build the SAM Application and determine the function language&#x2F; runtime - JS&#x2F;nodejs in this case:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h ethan_lambda_course % sam init --runtime nodejs14.x</span><br><span class="line">Which template source would you like to use?</span><br><span class="line">        1 - AWS Quick Start Templates</span><br><span class="line">        2 - Custom Template Location</span><br><span class="line">Choice: 1</span><br><span class="line"></span><br><span class="line">Cloning from https://github.com/aws/aws-sam-cli-app-templates</span><br><span class="line"></span><br><span class="line">Choose an AWS Quick Start application template</span><br><span class="line">        1 - Hello World Example</span><br><span class="line">        2 - Multi-step workflow</span><br><span class="line">        3 - Standalone function</span><br><span class="line">        4 - Scheduled task</span><br><span class="line">        5 - Data processing</span><br><span class="line">        6 - Serverless API</span><br><span class="line">Template: 1</span><br><span class="line"></span><br><span class="line">Based on your selections, the only Package type available is Zip.</span><br><span class="line">We will proceed to selecting the Package type as Zip.</span><br><span class="line"></span><br><span class="line">Based on your selections, the only dependency manager available is npm.</span><br><span class="line">We will proceed copying the template using npm.</span><br><span class="line"></span><br><span class="line">Project name [sam-app]:</span><br><span class="line"></span><br><span class="line">    -----------------------</span><br><span class="line">    Generating application:</span><br><span class="line">    -----------------------</span><br><span class="line">    Name: sam-app</span><br><span class="line">    Runtime: nodejs14.x</span><br><span class="line">    Architectures: x86_64</span><br><span class="line">    Dependency Manager: npm</span><br><span class="line">    Application Template: hello-world</span><br><span class="line">    Output Directory: .</span><br><span class="line"></span><br><span class="line">    Next steps can be found in the README file at ./sam-app/README.md</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Commands you can use next</span><br><span class="line">    =========================</span><br><span class="line">    [*] Create pipeline: cd sam-app &amp;&amp; sam pipeline init --bootstrap</span><br><span class="line">    [*] Test Function in the Cloud: sam sync --stack-name &#123;stack-name&#125; --watch</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="STEP-2-WRITE"><a href="#STEP-2-WRITE" class="headerlink" title="STEP 2: WRITE"></a>STEP 2: WRITE</h3><p>Write your function code using the desired language (I used JS w&#x2F; a node runtime)</p>
+<p>The process is to create your function and edit the configs in the <code>template.yaml</code> file that include the following to build your function:</p>
+<p>This is the basic framework of what the parameters of a serverless function for Lambda in the <code>template.yaml</code> file - my function is called ClockFunction</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ClockFunction:</span><br><span class="line">	Type: AWS:Serverless::Function</span><br><span class="line">		Properties:</span><br><span class="line">			CodeUri: clock/</span><br><span class="line">			Handler: handler.clock</span><br><span class="line">			Runtime: nodejs14.x</span><br><span class="line">			Events:</span><br><span class="line">				ClockApi:</span><br><span class="line">				Type: Api</span><br><span class="line">				Path: /clock</span><br><span class="line">				Method: get</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>This corresponds to the name of my .js file <code>handler.js</code> in the &#x2F;clock directory, and my function syntax begins with</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">exports.clock = async (event) =&gt; &#123;</span><br><span class="line">console.log(&quot;Clock function run!&quot;);</span><br><span class="line">const message = moment().format();</span><br><span class="line"></span><br><span class="line">const response = &#123;</span><br><span class="line">	statusCode: 200,</span><br><span class="line">	body: JSON.stringify(message),</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">return response;</span><br><span class="line">&#125; ;</span><br></pre></td></tr></table></figure>
+
+<h3 id="STEP-3-BUILD"><a href="#STEP-3-BUILD" class="headerlink" title="STEP 3: BUILD"></a>STEP 3: BUILD</h3><p>With your function code up and running, you can build your application, which draws from the .yaml (<code>/.aws-sam/build/template.yaml/</code>) file and other dependencies</p>
+<p>Build the SAM Application</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h sam-app % sam build</span><br><span class="line">Building codeuri: /Users/elimchayseng/Desktop/Dev/ethan_lambda_course/sam-app/hello-world runtime: nodejs14.x metadata: &#123;&#125; architecture: x86_64 functions: [&#x27;HelloWorldFunction&#x27;]</span><br><span class="line">Building codeuri: /Users/elimchayseng/Desktop/Dev/ethan_lambda_course/sam-app/ClockFunction runtime: nodejs14.x metadata: &#123;&#125; architecture: x86_64 functions: [&#x27;ClockFunction&#x27;]</span><br><span class="line">Running NodejsNpmBuilder:NpmPack</span><br><span class="line">Running NodejsNpmBuilder:CopyNpmrc</span><br><span class="line">Running NodejsNpmBuilder:CopySource</span><br><span class="line">Running NodejsNpmBuilder:NpmInstall</span><br><span class="line">Running NodejsNpmBuilder:CleanUpNpmrc</span><br><span class="line"></span><br><span class="line">Build Succeeded</span><br><span class="line"></span><br><span class="line">Built Artifacts  : .aws-sam/build</span><br><span class="line">Built Template   : .aws-sam/build/template.yaml</span><br><span class="line"></span><br><span class="line">Commands you can use next</span><br><span class="line">=========================</span><br><span class="line">[*] Invoke Function: sam local invoke</span><br><span class="line">[*] Test Function in the Cloud: sam sync --stack-name &#123;stack-name&#125; --watch</span><br><span class="line">[*] Deploy: sam deploy --guided</span><br></pre></td></tr></table></figure>
+
+<h3 id="STEP-4-PACKAGE"><a href="#STEP-4-PACKAGE" class="headerlink" title="STEP 4: PACKAGE"></a>STEP 4: PACKAGE</h3><p>First you need to have or create an S3 bucket for the package to be housed in.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h sam-app % aws s3 --region us-east-1 mb s3://lambda-course-sam-bucket-v1</span><br><span class="line">make_bucket: lambda-course-sam-bucket-v1</span><br></pre></td></tr></table></figure>
+
+<p>Then you package the application which creates a output template file and delivers the package to the S3 Bucket</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h sam-app % sam package --template-file template.yaml --output-template-file pck.yml --s3-bucket lambda-course-sam-bucket-v1</span><br><span class="line">Uploading to ffcc67c4c941076384d78437332779b4  1510 / 1510  (100.00%)</span><br><span class="line">Successfully packaged artifacts and wrote output template to file pck.yml.</span><br><span class="line">Execute the following command to deploy the packaged template</span><br><span class="line">sam deploy --template-file /Users/elimchayseng/Desktop/Dev/ethan_lambda_course/sam-app/pck.yml --stack-name &lt;YOUR STACK NAME&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="STEP-5-DEPLOY"><a href="#STEP-5-DEPLOY" class="headerlink" title="STEP 5: DEPLOY"></a>STEP 5: DEPLOY</h3><p>With your package in the S3 bucket and template files generated, you can now deploy your SAM application to Cloud Formation which creates a “Stack.” The CLI shows you the deployment steps primarily consisting of IAM&#x2F;permissions creation, function creation, and then the Gateway API creation.</p>
+<p><img src="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_CloudFormation.ad3a4c93b4fdd3366da3da0de4fb084d89a5d761.png" alt="AWS CloudFormation Deployment Steps, Lambda, S3"> <a target="_blank" rel="noopener" href="https://aws.amazon.com/cloudformation/">AWS CloudFormation Deployment Steps</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h sam-app % sam deploy --region us-east-1 --capabilities CAPABILITY_IAM --template-file pck.yml --stack-name ethan-lambda-course</span><br><span class="line"></span><br><span class="line">        Deploying with following values</span><br><span class="line">        ===============================</span><br><span class="line">        Stack name                   : ethan-lambda-course</span><br><span class="line">        Region                       : us-east-1</span><br><span class="line">        Confirm changeset            : False</span><br><span class="line">        Disable rollback             : False</span><br><span class="line">        Deployment s3 bucket         : None</span><br><span class="line">        Capabilities                 : [&quot;CAPABILITY_IAM&quot;]</span><br><span class="line">        Parameter overrides          : &#123;&#125;</span><br><span class="line">        Signing Profiles             : &#123;&#125;</span><br><span class="line"></span><br><span class="line">Initiating deployment</span><br><span class="line">=====================</span><br><span class="line"></span><br><span class="line">Waiting for changeset to be created..</span><br><span class="line"></span><br><span class="line">CloudFormation stack changeset</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">Operation                                                  LogicalResourceId                                          ResourceType                                               Replacement</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">+ Add                                                      ClockFunctionClockApiPermissionProd                        AWS::Lambda::Permission                                    N/A</span><br><span class="line">+ Add                                                      ClockFunctionRole                                          AWS::IAM::Role                                             N/A</span><br><span class="line">+ Add                                                      ClockFunction                                              AWS::Lambda::Function                                      N/A</span><br><span class="line">+ Add                                                      HelloWorldFunctionHelloWorldPermissionProd                 AWS::Lambda::Permission                                    N/A</span><br><span class="line">+ Add                                                      HelloWorldFunctionRole                                     AWS::IAM::Role                                             N/A</span><br><span class="line">+ Add                                                      HelloWorldFunction                                         AWS::Lambda::Function                                      N/A</span><br><span class="line">+ Add                                                      ServerlessRestApiDeployment6f1a1b8f3a                      AWS::ApiGateway::Deployment                                N/A</span><br><span class="line">+ Add                                                      ServerlessRestApiProdStage                                 AWS::ApiGateway::Stage                                     N/A</span><br><span class="line">+ Add                                                      ServerlessRestApi                                          AWS::ApiGateway::RestApi                                   N/A</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Changeset created successfully. arn:aws:cloudformation:us-east-1:405698139725:changeSet/samcli-deploy1644946616/34f1ebdf-d772-4832-b9c0-4551267d501d</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2022-02-15 11:37:07 - Waiting for stack create/update to complete</span><br><span class="line"></span><br><span class="line">CloudFormation events from stack operations</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">ResourceStatus                                             ResourceType                                               LogicalResourceId                                          ResourceStatusReason</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::IAM::Role                                             ClockFunctionRole                                          -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::IAM::Role                                             HelloWorldFunctionRole                                     -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::IAM::Role                                             ClockFunctionRole                                          Resource creation Initiated</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::IAM::Role                                             HelloWorldFunctionRole                                     Resource creation Initiated</span><br><span class="line">CREATE_COMPLETE                                            AWS::IAM::Role                                             ClockFunctionRole                                          -</span><br><span class="line">CREATE_COMPLETE                                            AWS::IAM::Role                                             HelloWorldFunctionRole                                     -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::Lambda::Function                                      ClockFunction                                              -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::Lambda::Function                                      HelloWorldFunction                                         -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::Lambda::Function                                      HelloWorldFunction                                         Resource creation Initiated</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::Lambda::Function                                      ClockFunction                                              Resource creation Initiated</span><br><span class="line">CREATE_COMPLETE                                            AWS::Lambda::Function                                      ClockFunction                                              -</span><br><span class="line">CREATE_COMPLETE                                            AWS::Lambda::Function                                      HelloWorldFunction                                         -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::ApiGateway::RestApi                                   ServerlessRestApi                                          -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::ApiGateway::RestApi                                   ServerlessRestApi                                          Resource creation Initiated</span><br><span class="line">CREATE_COMPLETE                                            AWS::ApiGateway::RestApi                                   ServerlessRestApi                                          -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::Lambda::Permission                                    ClockFunctionClockApiPermissionProd                        -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::Lambda::Permission                                    HelloWorldFunctionHelloWorldPermissionProd                 Resource creation Initiated</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::Lambda::Permission                                    ClockFunctionClockApiPermissionProd                        Resource creation Initiated</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::ApiGateway::Deployment                                ServerlessRestApiDeployment6f1a1b8f3a                      -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::Lambda::Permission                                    HelloWorldFunctionHelloWorldPermissionProd                 -</span><br><span class="line">CREATE_COMPLETE                                            AWS::ApiGateway::Deployment                                ServerlessRestApiDeployment6f1a1b8f3a                      -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::ApiGateway::Deployment                                ServerlessRestApiDeployment6f1a1b8f3a                      Resource creation Initiated</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::ApiGateway::Stage                                     ServerlessRestApiProdStage                                 -</span><br><span class="line">CREATE_COMPLETE                                            AWS::ApiGateway::Stage                                     ServerlessRestApiProdStage                                 -</span><br><span class="line">CREATE_IN_PROGRESS                                         AWS::ApiGateway::Stage                                     ServerlessRestApiProdStage                                 Resource creation Initiated</span><br><span class="line">CREATE_COMPLETE                                            AWS::Lambda::Permission                                    ClockFunctionClockApiPermissionProd                        -</span><br><span class="line">CREATE_COMPLETE                                            AWS::Lambda::Permission                                    HelloWorldFunctionHelloWorldPermissionProd                 -</span><br><span class="line">CREATE_COMPLETE                                            AWS::CloudFormation::Stack                                 ethan-lambda-course                                        -</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">CloudFormation outputs from deployed stack</span><br><span class="line">-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">Outputs</span><br><span class="line">-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">Key                 HelloWorldFunctionIamRole</span><br><span class="line">Description         Implicit IAM Role created for Hello World function</span><br><span class="line">Value               arn:aws:iam::405698139725:role/ethan-lambda-course-HelloWorldFunctionRole-1309Z2AUKVOA1</span><br><span class="line"></span><br><span class="line">Key                 HelloWorldApi</span><br><span class="line">Description         API Gateway endpoint URL for Prod stage for Hello World function</span><br><span class="line">Value               https://9xdsew9ji9.execute-api.us-east-1.amazonaws.com/Prod/hello/</span><br><span class="line"></span><br><span class="line">Key                 HelloWorldFunction</span><br><span class="line">Description         Hello World Lambda Function ARN</span><br><span class="line">Value               arn:aws:lambda:us-east-1:405698139725:function:ethan-lambda-course-HelloWorldFunction-En4ROF3L4a5m</span><br><span class="line">-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Successfully created/updated stack - ethan-lambda-course in us-east-1</span><br></pre></td></tr></table></figure>
+
+<h3 id="STEP-6-RUN"><a href="#STEP-6-RUN" class="headerlink" title="STEP 6: RUN"></a>STEP 6: RUN</h3><p>Now the Serverless Function has been deployed to AWS once the stack is successfully created. The function is live, and by going to the AWS console, you can see the function (the name is a mashup of the SAM app and the function name you provided in the <code>template.yaml</code>, in this case: <code>ethan-lambda-course-ClockFunction-om95YvKnpdg5</code>. The API gateway is built that was also specified in the <code>template.yaml</code> file.</p>
+<img src="/2022/02/15/deploy-lambda-aws-sam/aws_sam_app_console.png" class="" title="SAM Application&#x2F;Lambda Function in AWS Console">
+
+<p>You can also view the code source as well which matches the code posted in Step. 2. You can know invoke the function through the API gateway using the CLI, a web application, or Postman to mock a get request. I used the Postman Method shown below:</p>
+<img src="/2022/02/15/deploy-lambda-aws-sam/sam_app_postman_200.png" class="" title="ClockFunction - Lambda Function Invoked from Postman">
+
+<hr>
+<h3 id="Links-and-References"><a href="#Links-and-References" class="headerlink" title="Links and References:"></a>Links and References:</h3><p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html">AWS SAM Documentation</a><br><a target="_blank" rel="noopener" href="https://www.linkedin.com/learning/learning-amazon-web-services-lambda-2">LinkedIn Learning Course</a><br><a target="_blank" rel="noopener" href="https://aws.amazon.com/cloudformation/">AWS CloudFormation</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/elimchayseng">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://www.limchayseng.com/tags/running-thoughts/">running-thoughts</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lambda-Basics-SAM-Deployments"><span class="toc-number">1.</span> <span class="toc-text">Lambda Basics - SAM + Deployments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-1-INITIALIZE"><span class="toc-number">1.0.1.</span> <span class="toc-text">STEP 1: INITIALIZE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-2-WRITE"><span class="toc-number">1.0.2.</span> <span class="toc-text">STEP 2: WRITE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-3-BUILD"><span class="toc-number">1.0.3.</span> <span class="toc-text">STEP 3: BUILD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-4-PACKAGE"><span class="toc-number">1.0.4.</span> <span class="toc-text">STEP 4: PACKAGE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-5-DEPLOY"><span class="toc-number">1.0.5.</span> <span class="toc-text">STEP 5: DEPLOY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STEP-6-RUN"><span class="toc-number">1.0.6.</span> <span class="toc-text">STEP 6: RUN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Links-and-References"><span class="toc-number">1.0.7.</span> <span class="toc-text">Links and References:</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&text=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&is_video=false&description=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Build and Deploy a Serverless Lambda Function with AWS SAM&body=Check out this article: https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&title=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&name=Build and Deploy a Serverless Lambda Function with AWS SAM&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://limchayseng.com/2022/02/15/deploy-lambda-aws-sam/&t=Build and Deploy a Serverless Lambda Function with AWS SAM"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    Ethan Limchayseng
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/elimchayseng">Projects</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://www.limchayseng.com/tags/running-thoughts/">running-thoughts</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSS7KR9M69"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GSS7KR9M69');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

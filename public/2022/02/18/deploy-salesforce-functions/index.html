@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Salesforce functions is Salesforce’s variant of serverless compute that utilizes the Heroku stack of compute power to run synchronous and asynchronous functions. The primary benefit to SF Functions is">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deploying Serverless Code  with Salesforce Functions">
+<meta property="og:url" content="https://limchayseng.com/2022/02/18/deploy-salesforce-functions/index.html">
+<meta property="og:site_name" content="Limchayseng.com">
+<meta property="og:description" content="Salesforce functions is Salesforce’s variant of serverless compute that utilizes the Heroku stack of compute power to run synchronous and asynchronous functions. The primary benefit to SF Functions is">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://limchayseng.com/2022/02/18/deploy-salesforce-functions/dev_hub.png">
+<meta property="article:published_time" content="2022-02-18T23:25:45.000Z">
+<meta property="article:modified_time" content="2022-02-18T23:28:19.608Z">
+<meta property="article:author" content="Ethan Limchayseng">
+<meta property="article:tag" content="salesforce">
+<meta property="article:tag" content="serverless">
+<meta property="article:tag" content="lambda">
+<meta property="article:tag" content="functions">
+<meta property="article:tag" content="heroku">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://limchayseng.com/2022/02/18/deploy-salesforce-functions/dev_hub.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Deploying Serverless Code  with Salesforce Functions</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/elimchayseng">Projects</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://www.limchayseng.com/tags/running-thoughts/">running-thoughts</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/02/15/deploy-lambda-aws-sam/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&text=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&is_video=false&description=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Deploying Serverless Code  with Salesforce Functions&body=Check out this article: https://limchayseng.com/2022/02/18/deploy-salesforce-functions/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&name=Deploying Serverless Code  with Salesforce Functions&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&t=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Authentication-and-Login"><span class="toc-number">1.</span> <span class="toc-text">Authentication and Login</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Start-Setting-Up-and-Creating"><span class="toc-number">2.</span> <span class="toc-text">Start Setting Up and Creating</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploying"><span class="toc-number">3.</span> <span class="toc-text">Deploying</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Deploy-permissions-to-edit-Org-Data-if-needed"><span class="toc-number">3.1.</span> <span class="toc-text">Deploy permissions to edit Org Data (if needed)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deploy-your-project-containing-the-function-to-the-Compute-Env"><span class="toc-number">3.2.</span> <span class="toc-text">Deploy your project (containing the function) to the Compute Env.</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Deploying Serverless Code  with Salesforce Functions
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Ethan Limchayseng</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-02-18T23:25:45.000Z" itemprop="datePublished">2022-02-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/functions/" rel="tag">functions</a>, <a class="tag-link-link" href="/tags/heroku/" rel="tag">heroku</a>, <a class="tag-link-link" href="/tags/javascript/" rel="tag">javascript</a>, <a class="tag-link-link" href="/tags/lambda/" rel="tag">lambda</a>, <a class="tag-link-link" href="/tags/salesforce/" rel="tag">salesforce</a>, <a class="tag-link-link" href="/tags/serverless/" rel="tag">serverless</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Salesforce functions is Salesforce’s variant of serverless compute that utilizes the Heroku stack of compute power to run synchronous and asynchronous functions. The primary benefit to SF Functions is that they are integrated with your Salesforce Org, so you can easily offload any heavy compute processes needed to manage data or perform complex operations, all within the Salesforce trust boundary. The functionality is very similar to Lambda, which I covered how to build and deploy in the <a target="_blank" rel="noopener" href="https://www.limchayseng.com/2022/02/15/deploy-lambda-aws-sam/">SAM Blog Post</a>. This post is a companion post to the SAM one, and I will walk through the similar processes between the two methods, and then another post will follow to compare and contrast some of the differences (User Experience Wise, not technical wise) between the two serverless compute platforms: AWS vs. Heroku&#x2F;Salesforce. For the purpose of this post though, we will only focus on Salesforce Functions following the guide found in the <a target="_blank" rel="noopener" href="https://developer.salesforce.com/docs/platform/functions/guide/index.html">Salesforce Documentation</a>.</p>
+<h3 id="Authentication-and-Login"><a href="#Authentication-and-Login" class="headerlink" title="Authentication and Login"></a>Authentication and Login</h3><p>You need to have a pretty solid understanding of how Salesforce works in order to get logged in and set up correctly. The most basic “architecture” of the platform you should know is the hierarchy of objects, app, and org.</p>
+<p>Org is short for organization, and it refers to a specific instance of Salesforce. A company can have one or multiple orgs, and “scratch orgs” are created as a development instance of an org. Within an Org, there are several apps that are a set of objects, fields, and other functionality that supports a business process for the org. An object is the data that make up the app. To break it down further, an org contains several apps like the “sales” app and “marketing” app, which are then composed of objects such as Contacts, Locations, or Sales.</p>
+<p>You need to make sure you have the right dependencies for the <code>sfdx</code> and <code>sf</code> CLI’s. There are specific plugins for the <code>sf</code> CLI required to follow the quick start docs and actually generate and deploy your function. This caused me a lot of headaches to be able to start the basic commands.</p>
+<p>The process to auth and set up the project isn’t super straightforward because you need to be able to first: authenticate and log into your Org.</p>
+<p><code>sf login</code> or <code>sfdx login</code></p>
+<p>Once this is done, you need to enable DevHub, which allows you to create Scratch orgs (A scratch org is a source-driven and disposable deployment of Salesforce code and metadata. You’ll use a scratch org to do your Salesforce Functions development and local testing) and make changes to the Org through the CLI.</p>
+<img src="/2022/02/18/deploy-salesforce-functions/dev_hub.png" class="" title="Salesforce DevHub">
+
+<p>Then you also need to authenticate your CLI to the Function App, which is an additional step to authenticate.</p>
+<p><code>sf functions login</code></p>
+<p>There are probably reasons why you can’t just log into your org and have the access you need, but the underlying reason isn’t quite clear to me.</p>
+<p>You’ll need to log into a third environment to get all the access you will need. Using <code>sfdx</code> you’ll log into&#x2F;create a Devhub User using the following command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx auth:web:login —setdefaultdevhubusername —setalias eth_function_devhub</span><br><span class="line">Successfully authorized [elimchayseng@functions.com](mailto:elimchayseng@functions.com) with org ID 00D8c000004fafvEAA</span><br><span class="line"></span><br><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx auth:list</span><br><span class="line">=== authenticated orgs</span><br><span class="line">ALIAS USERNAME ORG ID INSTANCE URL AUTH METHOD</span><br><span class="line">─────────────────── ────────────────────────── ────────────────── ─────────────────────────────────────── ───────────</span><br><span class="line">eth_function_devhub [elimchayseng@functions.com](mailto:elimchayseng@functions.com) 00D8c000004fafvEAA [https://functionscom7.my.salesforce.com](https://functionscom7.my.salesforce.com) web</span><br></pre></td></tr></table></figure>
+
+<p>So to recap:</p>
+<ol>
+<li>you need to 1. Login to your Org that has the Functions Feature enabled. This is done through the sfdx command:</li>
+</ol>
+<p><code>sf login</code> or <code>sfdx login</code></p>
+<ol start="2">
+<li>After you are logged into your org, you will need to authenticate the CLI and login to the Functions account to use the Functions Feature within your Org:</li>
+</ol>
+<p><code>sf functions login</code></p>
+<ol start="3">
+<li>After you are logged into your org and you’ve authenticated the Functions account&#x2F;CLI, then you need to log into your Devhub (within the Org) using the following command:</li>
+</ol>
+<p><code>sfdx auth:web:login --setdefaultdevhubusername --setalias [your chosen alias name]</code></p>
+<h3 id="Start-Setting-Up-and-Creating"><a href="#Start-Setting-Up-and-Creating" class="headerlink" title="Start Setting Up and Creating"></a>Start Setting Up and Creating</h3><p>Now locally in your code editor or VS code, you will need to create a project which will auto-populate the applicable files needed for the next steps:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sf generate project -n sf_function_eth</span><br></pre></td></tr></table></figure>
+
+<p>Once that is set up, you’ll need to create the scratch org (more details provided above). When doing any operation that requires manipulating the actual Org environment, you’ll need to be using the <code>sfdx</code> CLI commands. You’re also pulling from the newly created &#x2F;config folder in your directory to generate the scratch org. This is where the function feature is also initiated. In this case to spin up a scratch org the command is then:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx force:org:create -s -f config/project-scratch-def.json -a functions_blog_scratch_org</span><br><span class="line"></span><br><span class="line">Successfully created scratch org: 00D1k000000I7AGEA0, username: [test-uwrpwmf2bjaa@example.com](mailto:test-uwrpwmf2bjaa@example.com)</span><br></pre></td></tr></table></figure>
+
+<p>You can now validate that you have you’re main Org (with DevHub) and your Scratch Org enabled in your local environment:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx force:org:list</span><br><span class="line">=== Orgs</span><br><span class="line">ALIAS USERNAME ORG ID CONNECTED STATUS</span><br><span class="line">─── ─────────────────── ────────────────────────── ────────────────── ────────────────</span><br><span class="line">(D) eth_function_devhub [elimchayseng@functions.com](mailto:elimchayseng@functions.com) 00D8c000004fafvEAA Connected</span><br><span class="line"></span><br><span class="line">ALIAS USERNAME ORG ID EXPIRATION DATE</span><br><span class="line">─── ────────────────────────── ───────────────────────────── ────────────────── ───────────────</span><br><span class="line">(U) functions_blog_scratch_org [test-uwrpwmf2bjaa@example.com](mailto:test-uwrpwmf2bjaa@example.com) 00D1k000000I7AGEA0 2022-02-23</span><br></pre></td></tr></table></figure>
+
+<p>After you’ve created a scratch org, now you need to create a compute environment. A compute environment is where you will actually be running your function and is similar to spinning up a dyno instance in Heroku. This is the final layer you need to build and access to run your function code. You use the <code>sf</code> CLI command here as you are not altering any Org level data, but rather generating&#x2F;creating within the scratch org.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sf env create compute -o functions_blog_scratch_org -a function_blog_compute_env</span><br><span class="line"></span><br><span class="line">Creating compute environment for org ID 00D1k000000I7AGEA0... done</span><br><span class="line">New compute environment created with ID functio-00d1k000000i7agea0-914</span><br><span class="line">Connecting environments... done</span><br><span class="line">Your compute environment with local alias function_blog_compute_env is ready.</span><br></pre></td></tr></table></figure>
+
+<p>With the compute environment ready, you can now generate your function. Again, <code>sf</code> is the CLI command here for generation.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sf generate function -n blogfunction -l javascript</span><br><span class="line"></span><br><span class="line">Created javascript function blogfunction in /Users/elimchayseng/Desktop/Dev/sf_functions_eth/function_blog_post/functions/blogfunction.</span><br></pre></td></tr></table></figure>
+
+<p>Before creating Scratch Orgs for development, please ensure that:</p>
+<ol>
+<li>Enable Functions in your DevHub org</li>
+<li>Add Functions to the “features” list in your scratch org definition JSON file, e.g. <code>&quot;features&quot;: [&quot;Functions&quot;]</code></li>
+</ol>
+<p>This creates a new directory sharing the name of your function (<code>blogfunction</code> in my case) with your function “infrastructure.” From here, you can edit the <code>index.js</code> file to begin writing your actual serverless function in Javascript.</p>
+<h3 id="Deploying"><a href="#Deploying" class="headerlink" title="Deploying"></a>Deploying</h3><p>With your function written, you can now deploy the function code and permissions necessary to run your code in the compute enviornment connected to your Scratch Org.</p>
+<h4 id="Deploy-permissions-to-edit-Org-Data-if-needed"><a href="#Deploy-permissions-to-edit-Org-Data-if-needed" class="headerlink" title="Deploy permissions to edit Org Data (if needed)"></a>Deploy permissions to edit Org Data (if needed)</h4><p>Depending on your functions purpose, you may need to read or write to the Org you’re connected to. In that case, you will need to allow the function to manipulate that data, and that’s done by creating a permission set file in the “force app” directory - which covers the settings within your org. At this path <code>force-app/main/default/permissionsets</code>, you create the <code>Functions.permissionset-meta.xml</code> file</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;PermissionSet xmlns=&quot;[http://soap.sforce.com/2006/04/metadata](http://soap.sforce.com/2006/04/metadata)&quot;&gt;</span><br><span class="line">&lt;hasActivationRequired&gt;true&lt;/hasActivationRequired&gt;</span><br><span class="line">&lt;label&gt;Functions&lt;/label&gt;</span><br><span class="line">&lt;objectPermissions&gt;</span><br><span class="line">&lt;allowCreate&gt;true&lt;/allowCreate&gt;</span><br><span class="line">&lt;allowDelete&gt;false&lt;/allowDelete&gt;</span><br><span class="line">&lt;allowEdit&gt;true&lt;/allowEdit&gt;</span><br><span class="line">&lt;allowRead&gt;true&lt;/allowRead&gt;</span><br><span class="line">&lt;modifyAllRecords&gt;false&lt;/modifyAllRecords&gt;</span><br><span class="line">&lt;object&gt;Account&lt;/object&gt;</span><br><span class="line">&lt;viewAllRecords&gt;false&lt;/viewAllRecords&gt;</span><br><span class="line">&lt;/objectPermissions&gt;</span><br><span class="line">&lt;/PermissionSet&gt;</span><br></pre></td></tr></table></figure>
+
+<p>You then push this new file to your scratch org to give permissions to the function app to write&#x2F;create&#x2F;edit your org data using the <code>sfdx</code> command since you are pushing an org level change.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx force:source:push -f -u functions_blog_scratch_org</span><br><span class="line">*** Deploying with SOAP ***</span><br><span class="line">Job ID | 0Af1k00001GNoGsCAL</span><br><span class="line">SOURCE PROGRESS | ████████████████████████████████████████ | 1/1 Components</span><br><span class="line">=== Pushed Source</span><br><span class="line">STATE FULL NAME TYPE PROJECT PATH</span><br><span class="line">───── ───────── ───────────── ──────────────────────────────────────────────────────────────────────</span><br><span class="line">Add Functions PermissionSet force-app/main/default/permissionsets/Functions.permissionset-meta.xml</span><br></pre></td></tr></table></figure>
+
+<h4 id="Deploy-your-project-containing-the-function-to-the-Compute-Env"><a href="#Deploy-your-project-containing-the-function-to-the-Compute-Env" class="headerlink" title="Deploy your project (containing the function) to the Compute Env."></a>Deploy your project (containing the function) to the Compute Env.</h4><p>Now that correct permission is given to the function, you can deploy your function to the compute env associated with that org. Technically, You deploy projects to your compute environment rather than individual Functions. For this guide we’ve created a DX project with a single Function, so we’re only pushing one function.</p>
+<p>You need to git commit your changes to the project directory to be able to push to the compute environment. Then you can use the <code>sf</code> cli to push the project containing the function to the compute environment.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % git init</span><br><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % git add .</span><br><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % git commit -m &quot;Initial project commit with blogfunction&quot;</span><br><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sf deploy functions -o functions_blog_scratch_org</span><br><span class="line">remote: Verifying deploy... done.</span><br><span class="line">remote: Building source:</span><br><span class="line">[....]</span><br><span class="line">To [https://git.heroku.com/functio-00d1k000000i7agea0-914.git](https://git.heroku.com/functio-00d1k000000i7agea0-914.git)</span><br><span class="line"></span><br><span class="line">-   [new branch] master → master</span><br><span class="line"></span><br><span class="line">Reference for function_blog_post-blogfunction created</span><br><span class="line">Pushing changes to functions... done</span><br></pre></td></tr></table></figure>
+
+<p>With the above, you can actually see that you just push the commit files to a heroku.com git repository, similar to deploying to a regular Heroku app. The “heroku app name” in this case is your compute environment name. Your code is now deployed.</p>
+<p>For Salesforce functions, you can now invoke your code through Apex invoking the function through the Apex Class using the following command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;FunctionApex.test();&quot; | sfdx force:apex:execute -f /dev/stdin</span><br></pre></td></tr></table></figure>
+
+<p>The results can be logged from the Javascript function and also viewed through the system debugger window in your Salesforce Org. You’ve now successfully built and deployed a function using Salesforce Functions and can perform tasks that interact directly within the Salesforce Trust Boundary of your Org.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/elimchayseng">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://www.limchayseng.com/tags/running-thoughts/">running-thoughts</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Authentication-and-Login"><span class="toc-number">1.</span> <span class="toc-text">Authentication and Login</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Start-Setting-Up-and-Creating"><span class="toc-number">2.</span> <span class="toc-text">Start Setting Up and Creating</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploying"><span class="toc-number">3.</span> <span class="toc-text">Deploying</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Deploy-permissions-to-edit-Org-Data-if-needed"><span class="toc-number">3.1.</span> <span class="toc-text">Deploy permissions to edit Org Data (if needed)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deploy-your-project-containing-the-function-to-the-Compute-Env"><span class="toc-number">3.2.</span> <span class="toc-text">Deploy your project (containing the function) to the Compute Env.</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&text=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&is_video=false&description=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Deploying Serverless Code  with Salesforce Functions&body=Check out this article: https://limchayseng.com/2022/02/18/deploy-salesforce-functions/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&title=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&name=Deploying Serverless Code  with Salesforce Functions&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://limchayseng.com/2022/02/18/deploy-salesforce-functions/&t=Deploying Serverless Code  with Salesforce Functions"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    Ethan Limchayseng
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/elimchayseng">Projects</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://www.limchayseng.com/tags/running-thoughts/">running-thoughts</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSS7KR9M69"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GSS7KR9M69');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

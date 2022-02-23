@@ -71,7 +71,7 @@ elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx force:org:create -s -f co
 Successfully created scratch org: 00D1k000000I7AGEA0, username: [test-uwrpwmf2bjaa@example.com](mailto:test-uwrpwmf2bjaa@example.com)
 ```
 
-You can now validate that you have you're main Org (with DevHub) and your Scratch Org enabled in your local environment:
+You can now validate that you have your main Org (with DevHub) and your Scratch Org enabled in your local environment:
 
 ```
 elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx force:org:list
@@ -148,6 +148,22 @@ SOURCE PROGRESS | ████████████████████�
 STATE FULL NAME TYPE PROJECT PATH
 ───── ───────── ───────────── ──────────────────────────────────────────────────────────────────────
 Add Functions PermissionSet force-app/main/default/permissionsets/Functions.permissionset-meta.xml
+```
+
+You will then edit your Apex Class file (`function_blog_post/force-app/main/default/classes/FunctionApex.cls`) to include the following to receive the invoke command from the CLI, and run the invoked function inside the org You will push this to your org using the same command above.
+
+```
+public with sharing class FunctionApex {
+    public static void invoke() {
+        System.debug('Invoking blogfunction');
+        String payload = '{"name":"ethan_blog_accountv1","accountNumber":"823947842938", "industry":"Technology","type":"Prospect","website": "www.salesforce-functions.com"}';
+        System.debug(payload);
+        functions.Function blogfunction = functions.Function.get('function_blog_post.blogfunction');
+        functions.FunctionInvocation invocation = blogfunction.invoke(payload);
+        String jsonResponse = invocation.getResponse();
+        System.debug('Response from myfunction ' + jsonResponse);
+    }
+}
 ```
 
 #### Deploy your project (containing the function) to the Compute Env.

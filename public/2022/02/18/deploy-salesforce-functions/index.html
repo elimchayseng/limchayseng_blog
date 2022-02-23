@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://limchayseng.com/2022/02/18/deploy-salesforce-functions/dev_hub.png">
 <meta property="article:published_time" content="2022-02-18T23:25:45.000Z">
-<meta property="article:modified_time" content="2022-02-18T23:28:19.608Z">
+<meta property="article:modified_time" content="2022-02-23T01:46:02.413Z">
 <meta property="article:author" content="Ethan Limchayseng">
 <meta property="article:tag" content="salesforce">
 <meta property="article:tag" content="serverless">
@@ -83,6 +83,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/02/22/running-thoughts-consumed/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" aria-label="Next post" href="/2022/02/15/deploy-lambda-aws-sam/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -191,7 +193,7 @@
 <p>Once that is set up, you’ll need to create the scratch org (more details provided above). When doing any operation that requires manipulating the actual Org environment, you’ll need to be using the <code>sfdx</code> CLI commands. You’re also pulling from the newly created &#x2F;config folder in your directory to generate the scratch org. This is where the function feature is also initiated. In this case to spin up a scratch org the command is then:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx force:org:create -s -f config/project-scratch-def.json -a functions_blog_scratch_org</span><br><span class="line"></span><br><span class="line">Successfully created scratch org: 00D1k000000I7AGEA0, username: [test-uwrpwmf2bjaa@example.com](mailto:test-uwrpwmf2bjaa@example.com)</span><br></pre></td></tr></table></figure>
 
-<p>You can now validate that you have you’re main Org (with DevHub) and your Scratch Org enabled in your local environment:</p>
+<p>You can now validate that you have your main Org (with DevHub) and your Scratch Org enabled in your local environment:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx force:org:list</span><br><span class="line">=== Orgs</span><br><span class="line">ALIAS USERNAME ORG ID CONNECTED STATUS</span><br><span class="line">─── ─────────────────── ────────────────────────── ────────────────── ────────────────</span><br><span class="line">(D) eth_function_devhub [elimchayseng@functions.com](mailto:elimchayseng@functions.com) 00D8c000004fafvEAA Connected</span><br><span class="line"></span><br><span class="line">ALIAS USERNAME ORG ID EXPIRATION DATE</span><br><span class="line">─── ────────────────────────── ───────────────────────────── ────────────────── ───────────────</span><br><span class="line">(U) functions_blog_scratch_org [test-uwrpwmf2bjaa@example.com](mailto:test-uwrpwmf2bjaa@example.com) 00D1k000000I7AGEA0 2022-02-23</span><br></pre></td></tr></table></figure>
 
 <p>After you’ve created a scratch org, now you need to create a compute environment. A compute environment is where you will actually be running your function and is similar to spinning up a dyno instance in Heroku. This is the final layer you need to build and access to run your function code. You use the <code>sf</code> CLI command here as you are not altering any Org level data, but rather generating&#x2F;creating within the scratch org.</p>
@@ -212,6 +214,9 @@
 
 <p>You then push this new file to your scratch org to give permissions to the function app to write&#x2F;create&#x2F;edit your org data using the <code>sfdx</code> command since you are pushing an org level change.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">elimchayseng@elimcha-ltmyf5h function_blog_post % sfdx force:source:push -f -u functions_blog_scratch_org</span><br><span class="line">*** Deploying with SOAP ***</span><br><span class="line">Job ID | 0Af1k00001GNoGsCAL</span><br><span class="line">SOURCE PROGRESS | ████████████████████████████████████████ | 1/1 Components</span><br><span class="line">=== Pushed Source</span><br><span class="line">STATE FULL NAME TYPE PROJECT PATH</span><br><span class="line">───── ───────── ───────────── ──────────────────────────────────────────────────────────────────────</span><br><span class="line">Add Functions PermissionSet force-app/main/default/permissionsets/Functions.permissionset-meta.xml</span><br></pre></td></tr></table></figure>
+
+<p>You will then edit your Apex Class file (<code>function_blog_post/force-app/main/default/classes/FunctionApex.cls</code>) to include the following to receive the invoke command from the CLI, and run the invoked function inside the org You will push this to your org using the same command above.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public with sharing class FunctionApex &#123;</span><br><span class="line">    public static void invoke() &#123;</span><br><span class="line">        System.debug(&#x27;Invoking blogfunction&#x27;);</span><br><span class="line">        String payload = &#x27;&#123;&quot;name&quot;:&quot;ethan_blog_accountv1&quot;,&quot;accountNumber&quot;:&quot;823947842938&quot;, &quot;industry&quot;:&quot;Technology&quot;,&quot;type&quot;:&quot;Prospect&quot;,&quot;website&quot;: &quot;www.salesforce-functions.com&quot;&#125;&#x27;;</span><br><span class="line">        System.debug(payload);</span><br><span class="line">        functions.Function blogfunction = functions.Function.get(&#x27;function_blog_post.blogfunction&#x27;);</span><br><span class="line">        functions.FunctionInvocation invocation = blogfunction.invoke(payload);</span><br><span class="line">        String jsonResponse = invocation.getResponse();</span><br><span class="line">        System.debug(&#x27;Response from myfunction &#x27; + jsonResponse);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="Deploy-your-project-containing-the-function-to-the-Compute-Env"><a href="#Deploy-your-project-containing-the-function-to-the-Compute-Env" class="headerlink" title="Deploy your project (containing the function) to the Compute Env."></a>Deploy your project (containing the function) to the Compute Env.</h4><p>Now that correct permission is given to the function, you can deploy your function to the compute env associated with that org. Technically, You deploy projects to your compute environment rather than individual Functions. For this guide we’ve created a DX project with a single Function, so we’re only pushing one function.</p>
 <p>You need to git commit your changes to the project directory to be able to push to the compute environment. Then you can use the <code>sf</code> cli to push the project containing the function to the compute environment.</p>
@@ -285,7 +290,7 @@
     Copyright &copy;
     
     
-    2016-2022
+    2022
     Ethan Limchayseng
   </div>
   <div class="footer-right">

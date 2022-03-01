@@ -4,6 +4,8 @@ date: 2022-02-28 22:44:07
 tags: [marathon, endurance, race, running, krc, goals, boston, sub-3]
 ---
 
+{% asset_img ventura_back.png Ventura Marathon KRC Photo Credit %}
+
 ### Some Ethan Running History
 
 Back in 2020, my friend Tanner and I were discussing running, and specifically the race results for one of his old UCLA friends. His friend ran a marathon and got a time of 3 hours and a few seconds. Tanner helped educate me about how frustrating that must be because the qualifying time for the Boston Marathon was 3 hours. I had never paid any attention to any of those details when it came to marathon running, and I wasn't familiar with the world majors or the importance of the Boston Marathon in the running community.
@@ -12,7 +14,7 @@ As we both began to run more during the height of quarantine, we gained a better
 
 Even in May of 2021, we dabbled with the goal of trying to run what we called "7 for 7" which was 7 miles under 7 minutes per mile. We figured the goal would be challenging but doable. We both were able to hit that goal over the summer.
 
-Once I moved to Chicago in August of 2021, I began running with the Heartbreak Running Company group in the Lincoln Park neighborhood. There I met some incredibly strong runners that had all done Boston in the past and were training for even faster Marathon PRs (like 2 hours 45 minutes). Running with this group of wildly athletic people made me question if I actually had what it took to run a sub-3 hour marathon. I was holding my own during long runs with this group, which gave me confidence that I _maybe_ could if I trained hard enough, even though their recovery pace was my upper-tempo pace at that point.
+Once I moved to Chicago in August of 2021, I began running with the Heartbreak Running Company group in the Lincoln Park neighborhood. There I met some incredibly strong runners that had all done Boston in the past and were training for even faster Marathon PRs (like 2 hours 45 minutes). Running with this group of wildly athletic people made me question if I actually had what it takes to run a sub-3 hour marathon. I was holding my own during long runs with this group, which gave me confidence that I _maybe_ could if I trained hard enough, even though their recovery pace was my upper-tempo pace at that point.
 
 ### Path to Ventura + Some More History
 
@@ -105,3 +107,11 @@ With both lessons together, it was easy to stay in the moment, evaluate and appr
 #### What's next?
 
 Pray the Boston Marathon cut-off time is less than 3 minutes and 57 seconds.
+
+#### Strava
+
+<iframe height='405' width='590' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/activities/6748351467/embed/b64d8425d223ace1e76e47b874bbf7e245e74fe4'></iframe>
+
+#### Reddit x-post
+
+https://www.reddit.com/r/AdvancedRunning/comments/t42rqk/race_report_2022_ventura_marathon_sub3/

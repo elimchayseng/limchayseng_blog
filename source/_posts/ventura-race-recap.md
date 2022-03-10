@@ -22,7 +22,7 @@ In September 2021, I did the Ironman Santa Cruz 70.3. Coming off of that race, I
 
 I set the sub-3 goal then anyway but knew in my head that it was a stretch. When the race finally arrived, I had done some good marathon prep, but I wasn't experienced enough to know that I had not done the critical workouts to actually access my abilities and feel confident about the time goal.
 
-I ran the first half of Chicago pretty much on target, coming through the half at 1:30:22, so perfect timing if I could hit a negative split for the second half. The weather that day was tough, and I hadn't put in the time on feet, so around mile 20, things fell apart. I remember feeling that I was pushing really hard, figuring I was faster my target pace due to the effort, and then realized I had actually fallen almost a full minute per mile off pace, and into the high 7s :(
+I ran the first half of Chicago pretty much on target, coming through the half at 1:30:22, so perfect timing if I could hit a negative split for the second half. The weather that day was tough, and I hadn't put in the time on feet, so around mile 20, things fell apart. I remember feeling that I was pushing really hard, figuring I was faster than my target pace due to the effort, and then realized I had actually fallen almost a full minute per mile off pace, and into the high 7s :(
 
 I finished Chicago in 3 hours and 6 minutes, but had a blast and felt like I learned a lot about racing the marathon itself, and how difficult it really is to run under 3 hours.
 
@@ -42,7 +42,7 @@ I laid in bed for hours waiting for my alarm to go off. I pictured myself standi
 
 Up at 3:30am, eat, bathroom, bus to start line at 4:30, start line at 5:30, shakeout, bathroom, warm-up, and then "go" at 6:30am. My plan was to use the 2:55 pacers as my gauge to come out conservatively, and then work my way to the pace group towards the middle of the race. There ended up not being 2:55 pacers, even though the event website said so...
 
-With that plan blown to bits before I even started, I chatted with a few people to find a buddy to come out the gate with. I met Justin right before taking off, and we discussed holding a 6:45 to tackle the first 9 miles of the race, which had three 1.5 mile long climb. Another guy was planning to join us but blasted away about 60 seconds into the race.
+With that plan blown to bits before I even started, I chatted with a few people to find a buddy to come out the gate with. I met Justin right before taking off, and we discussed holding a 6:45 to tackle the first 9 miles of the race, which had three 1.5 mile long climbs. Another guy was planning to join us but blasted away about 60 seconds into the race.
 
 #### Start
 

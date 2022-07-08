@@ -1,5 +1,5 @@
 ---
-title: Trails of Miles x Tracksmith Mile Race Recap + Strava Detox
+title: Trials of Miles x Tracksmith Mile Race Recap + Strava Detox
 date: 2022-05-26 14:03:02
 tags: [running, track, strava, race, goals, sub-5]
 ---

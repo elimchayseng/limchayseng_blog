@@ -1,63 +1,61 @@
-# Astro Starter Kit: Blog
+# limchayseng.com
 
-```sh
-npm create astro@latest -- --template blog
+Personal blog of Ethan Limchayseng — endurance sports, software, and product notes.
+Built with [Astro](https://astro.build/), hosted on [Cloudflare Pages](https://pages.cloudflare.com/),
+deployed automatically from this repo's `main` branch.
+
+Live site: <https://www.limchayseng.com>
+
+## Project structure
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 ├── public/
+│   ├── _redirects           # legacy Hexo /:year/:month/:day/:title/ → /blog/:slug/ (301)
+│   └── favicon.*
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
+│   ├── assets/              # site-wide images and fonts
+│   ├── components/          # Header, Footer, BaseHead, etc.
+│   ├── content/blog/        # post markdown + co-located images
+│   ├── content.config.ts    # zod schema for post frontmatter
+│   ├── layouts/             # BlogPost.astro
+│   ├── pages/               # routes: /, /blog, /blog/[...slug], /about, /rss.xml
+│   ├── styles/global.css
+│   └── consts.ts            # SITE_TITLE, SITE_DESCRIPTION
 ├── astro.config.mjs
-├── README.md
 ├── package.json
 └── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Posts live in `src/content/blog/`. Add a new one by dropping in `my-post.md` with this frontmatter:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```yaml
+---
+title: My Post
+pubDate: 2026-05-21
+tags: [running, training]
+---
+```
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+Optional fields: `description`, `updatedDate`, `heroImage`, `categories`, `draft`. Images
+referenced by a post should sit next to its markdown and be linked with `![alt](./image.png)`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Commands
 
-## 🧞 Commands
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `npm install`     | Install dependencies                         |
+| `npm run dev`     | Local dev server at `localhost:4321`         |
+| `npm run build`   | Build static site to `./dist/`               |
+| `npm run preview` | Preview the production build locally         |
 
-All commands are run from the root of the project, from a terminal:
+## Deployment
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Cloudflare Pages is wired to the GitHub repo with Git integration. Pushing to `main`
+triggers a build (`npm run build`) and publishes `dist/` to <https://www.limchayseng.com>.
+PRs get preview deployments on a generated `*.pages.dev` URL.
 
-## 👀 Want to learn more?
+## History
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+Originally a Hexo blog hosted on Heroku (2022–2025). Migrated to Astro on
+Cloudflare Pages in May 2026; see commit `migrate hexo blog to astro on cloudflare pages`
+for the full refactor. The `_redirects` file preserves every old Hexo permalink.

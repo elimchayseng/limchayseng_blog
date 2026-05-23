@@ -1,0 +1,15 @@
+---
+interface Props {
+	maxWidth?: string;
+	margin?: string;
+}
+const { maxWidth, margin } = Astro.props;
+const style = [
+	maxWidth ? `max-width: ${maxWidth};` : '',
+	margin ? `margin: ${margin};` : '',
+]
+	.filter(Boolean)
+	.join(' ');
+---
+
+<hr class="chrome-rule" style={style || undefined} />

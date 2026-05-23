@@ -14,6 +14,14 @@ const blog = defineCollection({
 			tags: z.array(z.string()).optional(),
 			categories: z.array(z.string()).optional(),
 			draft: z.boolean().optional(),
+			// Redesign additions — all optional, all surface in the post detail layout
+			tag: z.string().optional(),
+			note: z.string().optional(),
+			resultLabel: z.string().optional(),
+			marginNotes: z
+				.array(z.object({ id: z.string(), text: z.string() }))
+				.optional(),
+			stravaStats: z.string().optional(),
 		}),
 });
 

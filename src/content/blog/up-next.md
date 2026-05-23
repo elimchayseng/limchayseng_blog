@@ -14,6 +14,7 @@ tags:
     ultra,
     vegas,
   ]
+tag: Notes
 ---
 
 With the sub-3 hour marathon behind me, I went through waves of different emotions over the past two weeks.

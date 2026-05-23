@@ -1,0 +1,81 @@
+---
+import thoughts from '../data/running-thoughts.json';
+
+interface Thought {
+	q: string;
+	src: string;
+}
+const items = thoughts as Thought[];
+---
+
+<aside class="rail">
+	<div class="bar" aria-hidden="true"></div>
+	<div class="divider" aria-hidden="true"></div>
+	<h3>Running thoughts</h3>
+	<p class="subtitle meta-mono">excerpts</p>
+	<div class="quotes">
+		{
+			items.map((t) => (
+				<div class="quote">
+					<p class="q">&ldquo;{t.q}&rdquo;</p>
+					<div class="attr meta-mono">— {t.src}</div>
+				</div>
+			))
+		}
+	</div>
+</aside>
+
+<style>
+	.rail {
+		position: relative;
+		padding-left: 28px;
+	}
+	.bar {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 3px;
+		height: 28px;
+		background: var(--hanko);
+	}
+	.divider {
+		position: absolute;
+		left: 1px;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+		background: rgba(239, 233, 221, 0.08);
+	}
+	h3 {
+		font-family: var(--sans);
+		font-weight: 500;
+		font-size: 15px;
+		margin: 0;
+		letter-spacing: -0.005em;
+		color: var(--ink);
+	}
+	.subtitle {
+		font-size: 10.5px;
+		letter-spacing: 0.06em;
+		color: var(--ink-faint);
+		margin: 4px 0 22px;
+	}
+	.quotes {
+		display: grid;
+		gap: 22px;
+	}
+	.q {
+		font-family: var(--serif);
+		font-style: italic;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 1.5;
+		color: var(--ink-soft);
+		margin: 0;
+	}
+	.attr {
+		margin-top: 6px;
+		color: var(--ink-faint);
+		font-size: 10.5px;
+	}
+</style>

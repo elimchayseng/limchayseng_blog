@@ -2,6 +2,7 @@
 title: Norcal Festive (The Plan)
 pubDate: 2022-11-18 15:50:58
 tags: [cycling, festive 500, endurance, san francisco]
+tag: Notes
 ---
 
 ### Intro

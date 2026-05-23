@@ -1,47 +1,47 @@
 ---
-import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import SkullMark from './SkullMark.astro';
 ---
 
 <header>
+	<a class="brand" href="/">
+		<SkullMark size={28} />
+		<span class="wordmark">limchayseng<span class="tld">.com</span></span>
+	</a>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
+		<HeaderLink href="/">writing</HeaderLink>
+		<HeaderLink href="/about">about</HeaderLink>
 	</nav>
 </header>
+
 <style>
 	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 24px;
 	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
+	.brand {
+		display: flex;
+		align-items: center;
+		gap: 11px;
 		text-decoration: none;
+		color: inherit;
+	}
+	.wordmark {
+		font-family: var(--sans);
+		font-size: 16px;
+		font-weight: 500;
+		letter-spacing: -0.005em;
+		color: var(--ink);
+	}
+	.tld {
+		color: var(--ink-mute);
+		font-weight: 400;
 	}
 	nav {
 		display: flex;
+		gap: 22px;
 		align-items: center;
-		justify-content: space-between;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
 	}
 </style>

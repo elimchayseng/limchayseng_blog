@@ -1,0 +1,22 @@
+---
+interface Props {
+	size?: number;
+}
+const { size = 24 } = Astro.props;
+---
+
+<img
+	src="/skull.png"
+	alt=""
+	width={size}
+	height={size}
+	class="skull-mark"
+	loading="eager"
+	decoding="async"
+/>
+
+<style>
+	:global(.skull-mark) {
+		display: block;
+	}
+</style>

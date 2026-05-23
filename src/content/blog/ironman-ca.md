@@ -2,6 +2,8 @@
 title: Ironman California Race Recap 🐻
 pubDate: 2022-10-30 11:15:26
 tags: [ironman, triathalon, race, endurance, recap, full-distance]
+tag: Triathlon
+note: first full distance. 140.6 in the rain.
 ---
 
 ### Intro

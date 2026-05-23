@@ -2,6 +2,7 @@
 title: Take the Bridge Chicago Race Recap
 pubDate: 2022-08-11 09:50:50
 tags: [unsanctioned, endurance, recap, race, chicago, running]
+tag: Race
 ---
 
 ### Context:

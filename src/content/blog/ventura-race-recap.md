@@ -1,7 +1,9 @@
 ---
-title: 2022 Ventura Marathon Race Recap
+title: 2022 Ventura Marathon — Sub-3
 pubDate: 2022-02-28 22:44:07
 tags: [marathon, endurance, race, running, krc, goals, boston, sub-3]
+tag: Marathon
+note: first sub-3. cried at the line.
 ---
 
 ![Ventura Marathon KRC Photo Credit](./ventura_back.png)

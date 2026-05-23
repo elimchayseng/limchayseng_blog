@@ -2,6 +2,7 @@
 title: Ironman 70.3 Steelhead Race Recap 🐟
 pubDate: 2022-07-08 12:49:24
 tags: [ironman, "70.3", recap, race, triathlon]
+tag: Triathlon
 ---
 
 On June 26, 2022, I traveled to the other side of Lake Michigan to race Ironman 70.3 Steelhead in Benton Harbor. The race was bleh, but the weekend itself was an awesome experience. How I ended up doing this race is covered in the [What's Next Post](https://www.limchayseng.com/2022/03/10/up-next/).

@@ -1,126 +1,308 @@
 /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+  limchayseng.com — "ink stone" dark system
+  Warm-off-white type on warm black, with restrained cool-silver chrome
+  register marks and a single hanko-red accent.
+*/
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+	--paper: #0c0b0a;
+	--paper-deep: #131210;
+	--paper-edge: #221f1b;
+
+	--ink: #efe9dd;
+	--ink-soft: #cdc6b6;
+	--ink-mute: #8a8474;
+	--ink-faint: #5c5749;
+
+	--hanko: #d34637;
+	--hanko-deep: #a8362a;
+
+	--chrome: #d8dce0;
+	--chrome-dim: #8a9099;
+	--chrome-edge: #4b5159;
+
+	--serif: 'Newsreader', 'Source Serif Pro', Georgia, serif;
+	--sans: 'Geist', -apple-system, system-ui, sans-serif;
+	--mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
 }
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	background: var(--paper);
+}
+
 body {
-	font-family: var(--font-atkinson);
 	margin: 0;
 	padding: 0;
-	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
+	font-family: var(--sans);
+	color: var(--ink);
+	background-color: var(--paper);
+	background-image:
+		radial-gradient(140% 90% at 50% 0%, rgba(255, 237, 200, 0.05) 0%, transparent 55%),
+		radial-gradient(120% 80% at 100% 100%, rgba(211, 70, 55, 0.04) 0%, transparent 50%),
+		url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+	background-attachment: fixed;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
-main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
-}
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
-}
+
 a {
-	color: var(--accent);
+	color: var(--ink);
+	text-decoration: none;
 }
-a:hover {
-	color: var(--accent);
-}
-p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
-}
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
+
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 8px;
+	display: block;
 }
-code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
-}
-pre {
-	padding: 1.5em;
-	border-radius: 8px;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
-}
+
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	border-top: 1px solid var(--paper-edge);
 }
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+
+/* — utility primitives ————————————————————————————— */
+
+.meta-mono {
+	font-family: var(--mono);
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ink-mute);
 }
+
+.paper-img {
+	filter: saturate(0.78) contrast(1.05) brightness(0.92);
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.skull-mark {
+	filter: invert(1) hue-rotate(180deg) saturate(0.4) brightness(1.05) contrast(1.05);
+}
+
+.nav-link {
+	font-family: var(--mono);
+	font-size: 11.5px;
+	letter-spacing: 0.04em;
+	color: var(--ink-soft);
+	text-decoration: none;
+	position: relative;
+	transition: color 200ms ease;
+}
+.nav-link:hover {
+	color: var(--ink);
+}
+.nav-link.active {
+	color: var(--ink);
+}
+.nav-link.active::after {
+	content: '';
+	position: absolute;
+	bottom: -4px;
+	left: 0;
+	width: 100%;
+	height: 1.5px;
+	background: var(--chrome);
+}
+
+/* — chrome accents ————————————————————————————————— */
+
+.chrome-rule {
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--chrome) 12%, var(--chrome) 88%, transparent);
+	opacity: 0.45;
+	border: none;
+	margin: 0;
+}
+
+.chrome-tick {
+	display: inline-block;
+	width: 2px;
+	height: 14px;
+	background: linear-gradient(180deg, var(--chrome-dim) 0%, var(--chrome) 50%, var(--chrome-dim) 100%);
+	opacity: 0.55;
+	vertical-align: middle;
+	flex-shrink: 0;
+}
+
+.corner-mark {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	opacity: 0.55;
+	pointer-events: none;
+	z-index: 1;
+}
+.corner-mark.tl {
+	top: 24px;
+	left: 24px;
+	border-top: 1px solid var(--chrome);
+	border-left: 1px solid var(--chrome);
+}
+.corner-mark.tr {
+	top: 24px;
+	right: 24px;
+	border-top: 1px solid var(--chrome);
+	border-right: 1px solid var(--chrome);
+}
+.corner-mark.bl {
+	bottom: 24px;
+	left: 24px;
+	border-bottom: 1px solid var(--chrome);
+	border-left: 1px solid var(--chrome);
+}
+.corner-mark.br {
+	bottom: 24px;
+	right: 24px;
+	border-bottom: 1px solid var(--chrome);
+	border-right: 1px solid var(--chrome);
+}
+
+/* — markdown post body ————————————————————————————— */
+
+.prose {
+	font-family: var(--serif);
+	font-weight: 300;
+	font-size: 17px;
+	line-height: 1.7;
+	color: var(--ink-soft);
+}
+.prose > * + * {
+	margin-top: 20px;
+}
+.prose h1 {
+	font-family: var(--sans);
+	font-weight: 500;
+	font-size: 36px;
+	letter-spacing: -0.025em;
+	line-height: 1.1;
+	color: var(--ink);
+	margin: 48px 0 16px;
+}
+.prose h2 {
+	font-family: var(--sans);
+	font-weight: 500;
+	font-size: 26px;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+	color: var(--ink);
+	margin: 40px 0 12px;
+}
+.prose h3 {
+	font-family: var(--sans);
+	font-weight: 500;
+	font-size: 20px;
+	letter-spacing: -0.014em;
+	line-height: 1.3;
+	color: var(--ink);
+	margin: 32px 0 10px;
+}
+.prose h4,
+.prose h5,
+.prose h6 {
+	font-family: var(--sans);
+	font-weight: 500;
+	color: var(--ink);
+	margin: 24px 0 8px;
+}
+.prose p {
+	margin: 0;
+}
+.prose strong,
+.prose b {
+	font-weight: 500;
+	color: var(--ink);
+}
+.prose em,
+.prose i {
+	font-style: italic;
+}
+.prose a {
+	color: var(--ink);
+	text-decoration: underline;
+	text-decoration-color: var(--ink-faint);
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+	transition: text-decoration-color 200ms ease, color 200ms ease;
+}
+.prose a:hover {
+	color: var(--hanko);
+	text-decoration-color: var(--hanko);
+}
+.prose ul,
+.prose ol {
+	padding-left: 1.4em;
+	margin: 0;
+}
+.prose li + li {
+	margin-top: 6px;
+}
+.prose img {
+	width: 100%;
+	height: auto;
+	background: var(--paper-deep);
+	filter: saturate(0.78) contrast(1.05) brightness(0.92);
+	margin: 8px 0;
+}
+.prose blockquote {
+	margin: 8px 0;
+	padding: 4px 0 4px 24px;
+	border-left: 2px solid var(--hanko);
+	font-family: var(--serif);
+	font-style: italic;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 1.35;
+	letter-spacing: -0.005em;
+	color: var(--ink);
+}
+.prose blockquote p {
+	margin: 0;
+}
+.prose code {
+	font-family: var(--mono);
+	font-size: 0.92em;
+	background: var(--paper-deep);
+	border: 1px solid var(--paper-edge);
+	border-radius: 3px;
+	padding: 1px 6px;
+	color: var(--ink);
+}
+.prose pre {
+	font-family: var(--mono);
+	font-size: 13px;
+	line-height: 1.55;
+	background: var(--paper-deep);
+	border: 1px solid var(--paper-edge);
+	border-radius: 4px;
+	padding: 16px 18px;
+	overflow-x: auto;
+	color: var(--ink-soft);
+}
+.prose pre code {
+	all: unset;
+	font-family: inherit;
+}
+.prose hr {
+	border: none;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--chrome) 12%, var(--chrome) 88%, transparent);
+	opacity: 0.35;
+	margin: 36px 0;
+}
+
+/* — accessibility ————————————————————————————————— */
 
 .sr-only {
 	border: 0;
@@ -130,12 +312,28 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
 	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* — responsive ————————————————————————————————————— */
+
+@media (max-width: 720px) {
+	.corner-mark {
+		display: none;
+	}
+	.prose {
+		font-size: 16.5px;
+	}
+	.prose h1 {
+		font-size: 30px;
+	}
+	.prose h2 {
+		font-size: 22px;
+	}
+	.prose blockquote {
+		font-size: 19px;
+		padding-left: 18px;
+	}
 }

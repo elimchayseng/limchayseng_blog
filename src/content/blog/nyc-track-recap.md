@@ -1,7 +1,9 @@
 ---
-title: Trials of Miles x Tracksmith Mile Race Recap + Strava Detox
+title: Trials of Miles × Tracksmith + Strava Detox
 pubDate: 2022-05-26 14:03:02
 tags: [running, track, strava, race, goals, sub-5]
+tag: Essay
+note: deleted the app for a year. recommend.
 ---
 
 Last weekend, I traveled to New York City to see friends and enjoy the city since I hadn't been since May of 2021. I also timed this trip to coincide with Track Night NYC + a mile time trial put on by Trails of Miles and Tracksmith at Ichan Stadium. I had seen content from the 2021 Track Night NYC event, and I wanted to be a part of it.

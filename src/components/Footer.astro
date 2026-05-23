@@ -1,15 +1,28 @@
 ---
-const today = new Date();
+import ChromeRule from './ChromeRule.astro';
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Ethan Limchayseng. All rights reserved.
+	<ChromeRule />
+	<div class="row">
+		<span class="meta">© EL · est. 2022 · chicago &amp; sf</span>
+	</div>
 </footer>
+
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
+		margin-top: 80px;
+	}
+	.row {
+		display: flex;
+		justify-content: flex-end;
+		align-items: baseline;
+		margin-top: 22px;
+		font-family: var(--mono);
+		font-size: 11px;
+		letter-spacing: 0.04em;
+	}
+	.meta {
+		color: var(--ink-faint);
 	}
 </style>

@@ -2,6 +2,20 @@
 title: Boston Marathon 2023 Race Recap 🦄
 pubDate: 2023-04-19 22:03:15
 tags: [marathon, endurance, race, running, heartbreak, goals, boston, sub-3]
+tag: Marathon
+note: ran it on a torn tendon. somehow the best one.
+resultLabel: "3:24:11"
+marginNotes:
+  - id: "01"
+    text: "Got the BQ at Ventura in Feb '22 — 2:56. Waited 14 months to actually run this one."
+  - id: "02"
+    text: "Diagnosed mid-training. Surgery happened the month after this race."
+  - id: "03"
+    text: "Forgot my watch at the hotel. Ran the whole thing on feel. Best decision of the day."
+stravaStats: |
+  26.2 mi · 3:24:11
+  avg 7:48/mi · 168 bpm
+  elevation 850 ft
 ---
 
 Both qualifying for and running the Boston Marathon was something I never thought I'd be able to do. It was a self-imposed limit on my own athletic potential. I talked about the background of this a lot in the (BQ) [Ventura Race Recap post.](https://www.limchayseng.com/2022/02/28/ventura-race-recap/) Diving deeper into the endurance world after my first real running races, it had become a life goal to run this marathon.

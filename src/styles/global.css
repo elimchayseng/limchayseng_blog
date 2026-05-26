@@ -179,7 +179,7 @@ hr {
 	color: var(--ink-soft);
 }
 .prose > * + * {
-	margin-top: 20px;
+	margin-top: 26px;
 }
 .prose h1 {
 	font-family: var(--sans);
@@ -253,10 +253,10 @@ hr {
 	height: auto;
 	background: var(--paper-deep);
 	filter: saturate(0.78) contrast(1.05) brightness(0.92);
-	margin: 8px 0;
+	margin: 32px 0;
 }
 .prose blockquote {
-	margin: 8px 0;
+	margin: 32px 0;
 	padding: 4px 0 4px 24px;
 	border-left: 2px solid var(--hanko);
 	font-family: var(--serif);

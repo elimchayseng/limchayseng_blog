@@ -26,7 +26,7 @@ We actually ended up missing our stop because we couldn't get to the rope to req
 
 After checking in and with soaking wet running shoes squishing out water with every step, we go to the stands to get cover and wait out the rain. The organizers announced that because of the lightning storms there would be a weather delay of at least one hour. About an hour passes and they announce they will push another 30 minutes, and the likelihood they will cancel the mile time trial is high. Mentally, this was super tough to not know if the race would actually take place. The track was completely flooded at this point.
 
-![Ichan Stadium](./track-flood.png)
+![Ichan Stadium](/blog-images/track-flood.png)
 
 Close to 7 pm, they announce the race will go on, and they are combining heats to get back on schedule. This meant that double the amount of people are now on the puddled track at the same time and that my race would be at 7:20 pm.
 
@@ -50,7 +50,7 @@ Monday afternoon, I received a mass email from the organizers stating that becau
 
 My only consolation was that maybe there was a great photo taken of me since I was at the front of the race pack and there were photographers everywhere. Sadly this was the best one I could find after messaging multiple people on Instagram — looking harsh and getting torched by (probably)a high school freshman.
 
-![Track Night NYC Tracksmith Mile](./nyc_track.png)
+![Track Night NYC Tracksmith Mile](/blog-images/nyc_track.png)
 
 It's difficult to fully sum up the race experience. On one side it was horrible: stress getting to the event, difficult conditions, crowded wet track, a poor warm-up, and after all of it... no result to make it feel legitimate. On the other side, I accomplished my goal (at least I think/ unofficially).
 

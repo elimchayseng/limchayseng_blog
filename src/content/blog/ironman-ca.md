@@ -8,7 +8,7 @@ note: first full distance. 140.6 in the rain.
 
 ### Intro
 
-![Ironman California Signs](./im_ca_signs.jpeg)
+![Ironman California Signs](/blog-images/im_ca_signs.jpeg)
 
 A lot of people asked me how one ends up deciding to race an Ironman. I think it comes from the progression of constantly trying to break through whatever limits you impose on yourself. Can I run 10 miles? Yea-ok, what about a half marathon? Yea-ok. What about a full marathon? Yea-ok, and so on and so forth.
 
@@ -32,7 +32,7 @@ I got to the shuttle line at 5:45 am thinking I would be fine on time since I wa
 
 ### Swim
 
-![Ironman California Swim](./im_ca_swim.jpeg)
+![Ironman California Swim](/blog-images/im_ca_swim.jpeg)
 
 The swim was amazing. I felt really calm and in a flow for the whole race. I was able to sight fairly easily and dodge most people to not get kicked in the face. Since it was down current, it just flew by. I came out of the water in 51 minutes which was about 15-20 minutes faster than I expected. It almost seemed like an unfair advantage compared to other Ironman races, but I think my open water swim training with the "North Ave Swim Team (yo)" aka N.A.S.T.Y. really paid off and it all combined with the benefit of the current to make for a great swim.
 
@@ -40,7 +40,7 @@ I came out of the water feeling fresh. The only negative was the .75-mile run fr
 
 ### Bike
 
-![Ironman California Bike](./im_ca_bike.jpeg)
+![Ironman California Bike](/blog-images/im_ca_bike.jpeg)
 
 The bike course was two 56-mile laps out and back. The course was extremely flat... even more than Chicago. My goal was to hold 20mph for the entire course (with no drafting per the rules) and a second goal was to hit a 100mi in under 5 hours. I was excited to really push it but knew there were two important factors to consider. The first was controlling the effort to not explode on the run. I feel like I really pushed the bike section during the Ironman 70.3 Steelhead race, and I paid for it with a less-than-optimal run. The second was the wind. The weather said it would be pretty rough, but I wasn't quite prepared for how bad.
 
@@ -50,7 +50,7 @@ The way out was nice as I tried to keep things "chill" and cruise with the tailw
 
 As soon as I turned around it at mile 26, it felt like biking through mud. The wind hit me head-on and my speed was cut in half. Pushing with huge power, I could only get up to around 14 or 15 mph. I read later that the headwind ended up being around 25mph with 35pmh gusts in some areas. Several other riders (especially those with aero wheels) ended up crashing due to the cross winds and gusts. I saw one rider go completely over his handlebars and snap his fork and handlebars after a gust caused his front wheel to pivot. After surviving the first headwind section, I turned around knowing that I would have to do it all again.
 
-![Ironman California Headwind](./im_ca_headwind.jpeg)
+![Ironman California Headwind](/blog-images/im_ca_headwind.jpeg)
 
 Back at the turnaround near transition, I passed our 12-person support crew and gained momentum back out with the wind behind me. I knew I would need to preemptively push to make up for the time I would be losing on the way back. By holding about 30mph in the tailwind, the third segment flew by.
 
@@ -60,7 +60,7 @@ Then, the last three miles of the course were the worst. The headwind intensifie
 
 ### Run
 
-![Ironman California Run](./im_ca_run.jpeg)
+![Ironman California Run](/blog-images/im_ca_run.jpeg)
 
 With my legs much more fatigued than I planned, I headed off on the run. I actually ended up passing my bike opponent out of transition, so that was at least a win.
 
@@ -82,7 +82,7 @@ I went on in this broken state all the way until about mile 20. It was a long 4 
 
 I reunited with the entire cheer squad with the best cheer signs I've ever seen in my entire life at the final hill before dropping into downtown Sacramento, where the run concluded with two 2 mile loops into the finish. With fully locked-out calves, I had to walk that climb up to the cheer squad. It was mortifying, depressing, and concerning.
 
-![Ironman California Walk](./im_ca_walk.jpeg)
+![Ironman California Walk](/blog-images/im_ca_walk.jpeg)
 
 I made it to the top, and motivated by all my friends, forced my legs to keep running. By that time, I think all the fuel I had put into my body finally started to take effect and the closeness of the finish generated a second wind.
 
@@ -90,17 +90,17 @@ I was able to run a full mile without slowing down. I stopped at the aid station
 
 I was actually able to begin picking up the pace. My calves stopped tingling and I was able to get into a stride again. I began running faster than I was around that mile 4 mark. I passed my parents, my brother, and my friends multiple times. I did the two loops having to pass the announcers proclaiming each new finisher and Ironman. Then it was finally my turn.
 
-![Ironman California Pointing](./im_ca_point.jpeg)
+![Ironman California Pointing](/blog-images/im_ca_point.jpeg)
 
 I came through the finish running as fast as I could with all that I had left in me. I finally reached the Ironman carpet. I crossed the threshold. I was in the moment I had thought about for years. I was in the place I never thought I would have what it would take to make it to. I was officially an Ironman.
 
-![Ironman California Finish](./im_ca_finish.jpeg)
+![Ironman California Finish](/blog-images/im_ca_finish.jpeg)
 
 ### Post Race Reflections:
 
 _The Support_
 
-![Ironman California Cheer Group](./im_ca_group.jpeg)
+![Ironman California Cheer Group](/blog-images/im_ca_group.jpeg)
 
 For me, the best part of this entire sport and these races is the support of friends, family, and strangers. What was crazier than the actual distances was the fact that so many people were invested in my success and my journey through this race. The only thing I wanted out of this race was to make all of those people proud and I knew no matter my actual result, that would happen if I didn't give up. These feelings are what got me through all of those darkest and most negative points in the race. It made it worth pushing through the pain and honestly the only thing that made the entire experience worth doing.
 

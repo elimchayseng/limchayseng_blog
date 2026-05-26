@@ -12,11 +12,11 @@ In an effort to dive a little deeper into how runtime networking really works, I
 
 NGINX is basically a gateway between the internet and the actual back-end infrastructure (servers running your application - thus, app server). The actual compute infrastructure can be anything from whole servers, docker containers, or kubernetes pods... pretty much any form of distributed computing you want to serve requests to.
 
-![NGINX Reverse Proxy Architecture](./NGINX_diag.png)
+![NGINX Reverse Proxy Architecture](/blog-images/NGINX_diag.png)
 
 This set up is called a reverse-proxy where the web server (NGINX) sits in front of the app servers, aka between the internet and the app server. This is the opposite of a forward proxy (or regular proxy) where the web server sits in-between the client and the internet. I was confused about this at first, but it helps to visualize where the "internal network" that's firewalled off from the rest of the public internet is in these cases.
 
-![Types of Proxy Servers](./proxy_pic.png)
+![Types of Proxy Servers](/blog-images/proxy_pic.png)
 
 _Regular/Forward Proxy:_ The internal network is owned and guarded by the client, that uses the proxy to control what is coming in or out of the client computer/network. This would be useful for an on-site government clearance network, that has sensitive material on the client server, that needs to be as locked away from the public as possible.
 

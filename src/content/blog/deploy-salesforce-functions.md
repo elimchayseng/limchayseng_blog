@@ -20,7 +20,7 @@ The process to auth and set up the project isn't super straightforward because y
 
 Once this is done, you need to enable DevHub, which allows you to create Scratch orgs (A scratch org is a source-driven and disposable deployment of Salesforce code and metadata. You'll use a scratch org to do your Salesforce Functions development and local testing) and make changes to the Org through the CLI.
 
-![Salesforce DevHub](./dev_hub.png)
+![Salesforce DevHub](/blog-images/dev_hub.png)
 
 Then you also need to authenticate your CLI to the Function App, which is an additional step to authenticate.
 

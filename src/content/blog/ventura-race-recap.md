@@ -6,7 +6,7 @@ tag: Marathon
 note: first sub-3. cried at the line.
 ---
 
-![Ventura Marathon KRC Photo Credit](./ventura_back.png)
+![Ventura Marathon KRC Photo Credit](/blog-images/ventura_back.png)
 
 ### Some Ethan Running History
 
@@ -86,7 +86,7 @@ A friend drove up from LA to cheer, and caught Tanner and I at the final straigh
 
 With legs wobbly and feeling like bricks, I cruised through the finish line alongside Tanner for a finish time of 2:56:03.
 
-![Ventura Marathon Finish Line](./ventura_finish.png)
+![Ventura Marathon Finish Line](/blog-images/ventura_finish.png)
 
 ### Post-Race Thoughts
 

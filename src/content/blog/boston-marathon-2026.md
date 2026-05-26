@@ -40,7 +40,7 @@ When people asked me what I was going for, I just kept saying "sub-3 and I'll be
 
 ### Race Day
 
-![Boston 2026 race photo](./boston2026_marathonphoto_ethan1.png)
+![Boston 2026 race photo](/blog-images/boston2026_marathonphoto_ethan1.png)
 not a single good photo this year sadly, so here's a marathonfoto watermark one
 
 #### Start
@@ -113,4 +113,4 @@ Overall, the race itself made sense with the training block. Both of them were k
 
 The real win was to get to come back at all, with a body/legs that (mostly) worked, in a year where the weather was perfect, and Jenn was there at mile 24 for me. Those are the details of this race I'll remember instead of 3:00 or 2:59.
 
-![Jenn and me after the finish](./ethan_jenn_boston2026_finish.jpeg)
+![Jenn and me after the finish](/blog-images/ethan_jenn_boston2026_finish.jpeg)

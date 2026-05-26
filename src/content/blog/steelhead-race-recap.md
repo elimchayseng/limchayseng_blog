@@ -7,7 +7,7 @@ tag: Triathlon
 
 On June 26, 2022, I traveled to the other side of Lake Michigan to race Ironman 70.3 Steelhead in Benton Harbor. The race was bleh, but the weekend itself was an awesome experience. How I ended up doing this race is covered in the [What's Next Post](https://www.limchayseng.com/2022/03/10/up-next/).
 
-![ironman steelhead finish](./ironman_steelhead_finish.png)
+![ironman steelhead finish](/blog-images/ironman_steelhead_finish.png)
 
 ### Pre-Race Day:
 
@@ -27,7 +27,7 @@ The water was rough, and I had to fight not to be dragged off course from the bu
 
 Me not feeling it:
 
-![ironman steelhead swim](./ironman_steelhead_swim.png)
+![ironman steelhead swim](/blog-images/ironman_steelhead_swim.png)
 
 [Bike](https://www.strava.com/activities/7372991236):
 
@@ -57,4 +57,4 @@ As I said, the best part of the weekend was everything that surrounded the race.
 
 Me and Kelly!
 
-![ironman steelhead kelly](./steelhead_kelly.png)
+![ironman steelhead kelly](/blog-images/steelhead_kelly.png)

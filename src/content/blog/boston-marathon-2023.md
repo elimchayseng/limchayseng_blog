@@ -40,14 +40,14 @@ I was in a horrible mental space in the days leading up to the race. I was reall
 
 It was tough going to all of the pre-marathon events in that mindset. I think at the end of the day, I was just sad not to be able to give my all to something. I tried to check in with myself and tell myself I'd still try to enjoy it as much as I could.
 
-![busted tendon](./ankle.png)
+![busted tendon](/blog-images/ankle.png)
 Photo by [@kgunna](https://www.instagram.com/kgunaa/)
 
 ### Race Day
 
 When I woke up, I had some pretty severe moments of dread about what was about to happen. Walking was really painful, running 3 miles was pretty painful, and so I could not imagine how painful it would be to run 26.2 miles. It helped that I shared a room with my friend Paul and I felt part of a team with my neon green singlet with a burrito bandit on the back (photo below). That dread and doubt in myself passed pretty quickly as we blasted some [A$AP Ferg](https://www.youtube.com/watch?v=jtkYNsT24e8) to get pumped up to head to the busses.
 
-![Burrito Bandits](./burrito-bandits.png)
+![Burrito Bandits](/blog-images/burrito-bandits.png)
 Photo by [@kgunna](https://www.instagram.com/kgunaa/)
 
 > Paul and Mike from Heartbreak also rocking the Burrito Bandit Singlets
@@ -65,17 +65,17 @@ Between miles 2 and 3, there was another guy running next to me that was just ru
 Throughout the rest of the marathon, I tried to high-five and yell with as many people on the course as I could. I cheered for others and just fed on the energy of the spectators that lined the entire course for 26 miles. I smiled with every single step. I airplaned (see photo below) across each of the timing mats knowing that anyone who was tracking me was probably just impressed I was still moving down the course.
 
 🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️
-![Airplane](./hb-airplane.png)
+![Airplane](/blog-images/hb-airplane.png)
 🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️🛩️
 Photo by [@fidel.is.cool](https://www.instagram.com/fidel.is.cool/)
 
 The freedom from being zoned-in on a pace or fixated on a finishing time allowed me to run the most fun marathon I've ever run. The focus on just enjoying the run helped the pain fade to the background and stopped it from becoming the defining factor of my first Boston Marathon.
 
-![Smiling](./rain-smile.png)
+![Smiling](/blog-images/rain-smile.png)
 
 > I smiled with every single step.
 
-![Crowd Control](./crowd-pump.png)
+![Crowd Control](/blog-images/crowd-pump.png)
 
 I made it to Heartbreak Hill at mile 21 feeling better than I've ever felt at mile 21. I powered up the hill after seeing the big Heartbreak Hill crowd and even passed a lot of people I saw blow by me near the start. Many people's races began to fall apart due to the hills on the course, and I still felt on top of the world.
 
@@ -83,11 +83,11 @@ I made it to Heartbreak Hill at mile 21 feeling better than I've ever felt at mi
 
 Coming into Boston to the finish line was another out-of-body running experience similar to the one I had during one of the nights of my first Speed Project Race. Immense pain in my quads and calves from compensating for my injured tendon and the obvious immense pain from the actual tendon was completely dulled by the finish line stretch. The roar of the crowd was so deafening that I couldn't hear my own thoughts. The sky opened up and rain was pouring so hard that I could hardly open my eyes even with my glasses on.
 
-![finish rain](./rain-yell.png)
+![finish rain](/blog-images/rain-yell.png)
 
 Vision was gone. Hearing was gone. Feeling (and therefore pain) was gone. The only thing that was left was the booming energy of the crowd and the runners around me. Happy tears were streaming down my face behind my glasses and I was uncontrollably smiling with every stride through the finishing straight.
 
-![straight](./straight-smile.png)
+![straight](/blog-images/straight-smile.png)
 
 ### Reflections
 
@@ -95,6 +95,6 @@ Before the race, I was disappointed with how different the reality of my first B
 
 As a result of all this, I was really able to grow as a person. I was able to overcome the pain and walk away with my medal holding my head higher than if I ran a PR. This experience will make me fundamentally rethink how I approach sports and really any difficult situation in my life. I haven't fully put all the pieces together, but like most of the experiences I write about here, this marathon and build-up meant a lot more to me than the actual running. It was an opportunity to evaluate how I respond and adapt to tough situations. I think that this growth opportunity is worth 1000 times more than a fast finish time.
 
-![Bandit Running Shoot](./bandit-shoot.jpg)
+![Bandit Running Shoot](/blog-images/bandit-shoot.jpg)
 
 Photo by [@jasonlecras](https://www.instagram.com/jasonlecras/)

@@ -260,11 +260,11 @@ Successfully created/updated stack - ethan-lambda-course in us-east-1
 
 Now the Serverless Function has been deployed to AWS once the stack is successfully created. The function is live, and by going to the AWS console, you can see the function (the name is a mashup of the SAM app and the function name you provided in the `template.yaml`, in this case: `ethan-lambda-course-ClockFunction-om95YvKnpdg5`. The API gateway is built that was also specified in the `template.yaml` file.
 
-![SAM Application/Lambda Function in AWS Console](./aws_sam_app_console.png)
+![SAM Application/Lambda Function in AWS Console](/blog-images/aws_sam_app_console.png)
 
 You can also view the code source as well which matches the code posted in Step. 2. You can know invoke the function through the API gateway using the CLI, a web application, or Postman to mock a get request. I used the Postman Method shown below:
 
-![ClockFunction - Lambda Function Invoked from Postman](./sam_app_postman_200.png)
+![ClockFunction - Lambda Function Invoked from Postman](/blog-images/sam_app_postman_200.png)
 
 ---
 

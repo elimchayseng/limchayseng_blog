@@ -90,7 +90,12 @@ const COLUMNS = [
 										<span class="date">
 											<FormattedDate date={post.data.pubDate} format="mmdd" />
 										</span>
-										<span class="title">{post.data.title}</span>
+										<span class="entry">
+											<span class="title">{post.data.title}</span>
+											{post.data.note && (
+												<span class="note">{post.data.note}</span>
+											)}
+										</span>
 									</a>
 								))}
 							</div>
@@ -196,15 +201,27 @@ const COLUMNS = [
 				font-variant-numeric: tabular-nums;
 				flex-shrink: 0;
 			}
+			.entry {
+				display: flex;
+				flex-direction: column;
+				gap: 3px;
+				flex: 1;
+				min-width: 0;
+			}
 			.title {
 				font-family: var(--sans);
 				font-weight: 400;
 				font-size: 18px;
 				color: var(--ink);
-				flex: 1;
 				letter-spacing: -0.012em;
 				line-height: 1.35;
 				transition: color 200ms ease;
+			}
+			.note {
+				font-family: var(--sans);
+				font-size: 13px;
+				color: var(--ink-mute);
+				line-height: 1.4;
 			}
 			.row:hover .title {
 				color: var(--hanko);

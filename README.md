@@ -1,6 +1,11 @@
 # limchayseng.com
 
-Personal blog of Ethan Limchayseng — endurance sports, software, and product notes.
+I’ve decided to start this blog with the following goals:
+Explore a little more of my creative side and work on my writing skills
+Push my technical skills I use everyday such as networking, web development, and new software tech
+Publish and share any research and findings I have through my projects
+Integrate my fitness/running/cycling passion into all of the above to generate some hopefully interesting content
+
 Built with [Astro](https://astro.build/), hosted on [Cloudflare Pages](https://pages.cloudflare.com/),
 deployed automatically from this repo's `main` branch.
 

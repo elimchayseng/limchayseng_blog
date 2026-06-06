@@ -72,9 +72,9 @@ hr {
 /* — utility primitives ————————————————————————————— */
 
 .meta-mono {
-	font-family: var(--mono);
+	font-family: var(--sans);
 	font-size: 12px;
-	letter-spacing: 0.08em;
+	letter-spacing: 0.02em;
 	text-transform: uppercase;
 	color: var(--ink-mute);
 }
@@ -92,9 +92,9 @@ hr {
 }
 
 .nav-link {
-	font-family: var(--mono);
-	font-size: 11.5px;
-	letter-spacing: 0.04em;
+	font-family: var(--sans);
+	font-size: 14px;
+	letter-spacing: 0;
 	color: var(--ink-soft);
 	text-decoration: none;
 	position: relative;
@@ -116,59 +116,6 @@ hr {
 	background: var(--chrome);
 }
 
-/* — chrome accents ————————————————————————————————— */
-
-.chrome-rule {
-	height: 1px;
-	background: linear-gradient(90deg, transparent, var(--chrome) 12%, var(--chrome) 88%, transparent);
-	opacity: 0.45;
-	border: none;
-	margin: 0;
-}
-
-.chrome-tick {
-	display: inline-block;
-	width: 2px;
-	height: 14px;
-	background: linear-gradient(180deg, var(--chrome-dim) 0%, var(--chrome) 50%, var(--chrome-dim) 100%);
-	opacity: 0.55;
-	vertical-align: middle;
-	flex-shrink: 0;
-}
-
-.corner-mark {
-	position: absolute;
-	width: 14px;
-	height: 14px;
-	opacity: 0.55;
-	pointer-events: none;
-	z-index: 1;
-}
-.corner-mark.tl {
-	top: 24px;
-	left: 24px;
-	border-top: 1px solid var(--chrome);
-	border-left: 1px solid var(--chrome);
-}
-.corner-mark.tr {
-	top: 24px;
-	right: 24px;
-	border-top: 1px solid var(--chrome);
-	border-right: 1px solid var(--chrome);
-}
-.corner-mark.bl {
-	bottom: 24px;
-	left: 24px;
-	border-bottom: 1px solid var(--chrome);
-	border-left: 1px solid var(--chrome);
-}
-.corner-mark.br {
-	bottom: 24px;
-	right: 24px;
-	border-bottom: 1px solid var(--chrome);
-	border-right: 1px solid var(--chrome);
-}
-
 /* — markdown post body ————————————————————————————— */
 
 .prose {
@@ -183,28 +130,25 @@ hr {
 }
 .prose h1 {
 	font-family: var(--sans);
-	font-weight: 500;
-	font-size: 36px;
-	letter-spacing: -0.025em;
-	line-height: 1.1;
+	font-weight: 400;
+	font-size: 28px;
+	line-height: 1.25;
 	color: var(--ink);
-	margin: 48px 0 16px;
+	margin: 48px 0 14px;
 }
 .prose h2 {
 	font-family: var(--sans);
-	font-weight: 500;
-	font-size: 26px;
-	letter-spacing: -0.02em;
-	line-height: 1.2;
+	font-weight: 400;
+	font-size: 23px;
+	line-height: 1.3;
 	color: var(--ink);
 	margin: 40px 0 12px;
 }
 .prose h3 {
 	font-family: var(--sans);
-	font-weight: 500;
-	font-size: 20px;
-	letter-spacing: -0.014em;
-	line-height: 1.3;
+	font-weight: 400;
+	font-size: 19px;
+	line-height: 1.35;
 	color: var(--ink);
 	margin: 32px 0 10px;
 }
@@ -212,7 +156,8 @@ hr {
 .prose h5,
 .prose h6 {
 	font-family: var(--sans);
-	font-weight: 500;
+	font-weight: 400;
+	font-size: 17px;
 	color: var(--ink);
 	margin: 24px 0 8px;
 }
@@ -260,11 +205,9 @@ hr {
 	padding: 4px 0 4px 24px;
 	border-left: 2px solid var(--hanko);
 	font-family: var(--serif);
-	font-style: italic;
 	font-weight: 400;
-	font-size: 22px;
-	line-height: 1.35;
-	letter-spacing: -0.005em;
+	font-size: 20px;
+	line-height: 1.45;
 	color: var(--ink);
 }
 .prose blockquote p {
@@ -296,9 +239,7 @@ hr {
 }
 .prose hr {
 	border: none;
-	height: 1px;
-	background: linear-gradient(90deg, transparent, var(--chrome) 12%, var(--chrome) 88%, transparent);
-	opacity: 0.35;
+	border-top: 1px solid var(--paper-edge);
 	margin: 36px 0;
 }
 
@@ -320,9 +261,6 @@ hr {
 /* — responsive ————————————————————————————————————— */
 
 @media (max-width: 720px) {
-	.corner-mark {
-		display: none;
-	}
 	.prose {
 		font-size: 16.5px;
 	}

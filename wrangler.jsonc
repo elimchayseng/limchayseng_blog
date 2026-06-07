@@ -1,0 +1,12 @@
+{
+	// Static-assets deploy for the Astro build output. This is a static site:
+	// no Worker script (`main`) and no bindings. Declaring no `kv_namespaces`
+	// stops Cloudflare from re-provisioning a `SESSION` KV namespace on every
+	// deploy (which failed once the namespace already existed — error 10014).
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "limchayseng-blog",
+	"compatibility_date": "2025-06-01",
+	"assets": {
+		"directory": "./dist"
+	}
+}

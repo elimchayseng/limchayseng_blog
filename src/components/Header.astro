@@ -8,10 +8,13 @@ import SkullMark from './SkullMark.astro';
 		<SkullMark size={28} />
 		<span class="wordmark">limchayseng<span class="tld">.com</span></span>
 	</a>
-	<nav>
-		<HeaderLink href="/">writing</HeaderLink>
-		<HeaderLink href="/about">about</HeaderLink>
-	</nav>
+	<div class="right">
+		<slot />
+		<nav>
+			<HeaderLink href="/">writing</HeaderLink>
+			<HeaderLink href="/about">about</HeaderLink>
+		</nav>
+	</div>
 </header>
 
 <style>
@@ -39,9 +42,23 @@ import SkullMark from './SkullMark.astro';
 		color: var(--ink-mute);
 		font-weight: 400;
 	}
+	.right {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+	}
 	nav {
 		display: flex;
 		gap: 22px;
 		align-items: center;
+	}
+	@media (max-width: 720px) {
+		header {
+			flex-wrap: wrap;
+			row-gap: 16px;
+		}
+		.right {
+			display: contents;
+		}
 	}
 </style>

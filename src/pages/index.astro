@@ -53,31 +53,26 @@ const COLUMNS = [
 	</head>
 	<body>
 		<div class="page">
-			<Header />
-
-			<section class="hero">
-				<div class="hero-row">
-					<h1>Posts</h1>
-					<div class="socials">
-						{
-							SOCIALS.map((s, i) => (
-								<>
-									{i > 0 && <span class="sep">·</span>}
-									<a
-										class="social"
-										href={s.href}
-										target={s.href.startsWith('mailto') ? undefined : '_blank'}
-										rel={s.href.startsWith('mailto') ? undefined : 'noopener'}
-									>
-										<span>{s.label}</span>
-										<span class="arrow">↗</span>
-									</a>
-								</>
-							))
-						}
-					</div>
+			<Header>
+				<div class="socials">
+					{
+						SOCIALS.map((s, i) => (
+							<>
+								{i > 0 && <span class="sep">·</span>}
+								<a
+									class="social"
+									href={s.href}
+									target={s.href.startsWith('mailto') ? undefined : '_blank'}
+									rel={s.href.startsWith('mailto') ? undefined : 'noopener'}
+								>
+									<span>{s.label}</span>
+									<span class="arrow">↗</span>
+								</a>
+							</>
+						))
+					}
 				</div>
-			</section>
+			</Header>
 
 			<section class="columns">
 				{
@@ -113,24 +108,6 @@ const COLUMNS = [
 				min-height: 100vh;
 			}
 
-			.hero {
-				margin-top: 64px;
-			}
-			.hero-row {
-				display: flex;
-				align-items: baseline;
-				justify-content: space-between;
-				gap: 24px;
-			}
-			.hero h1 {
-				font-family: var(--sans);
-				font-weight: 500;
-				font-size: 44px;
-				letter-spacing: -0.03em;
-				line-height: 1;
-				margin: 0;
-				color: var(--ink);
-			}
 			.socials {
 				display: flex;
 				align-items: baseline;
@@ -159,7 +136,7 @@ const COLUMNS = [
 			}
 
 			.columns {
-				margin-top: 56px;
+				margin-top: 88px;
 				display: grid;
 				grid-template-columns: 1fr 1fr;
 				gap: 72px;
@@ -243,12 +220,12 @@ const COLUMNS = [
 				.page {
 					padding: 40px 24px;
 				}
-				.hero h1 {
-					font-size: 32px;
+				.columns {
+					margin-top: 48px;
 				}
-				.hero-row {
-					flex-direction: column;
-					gap: 8px;
+				.socials {
+					order: 3;
+					width: 100%;
 				}
 				/* Reclaim width for titles and give rows comfier tap targets. */
 				.row {

@@ -1,5 +1,5 @@
 ---
-title: "Virtual NYC Marathon Race Recap 2026 🎮"
+title: "Virtual NYC Marathon 2026 Race Recap 🎮"
 pubDate: 2026-11-07 13:00:00
 tags: [marathon, endurance, race, running, nyc, sub-3]
 tag: Marathon

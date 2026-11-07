@@ -162,7 +162,7 @@ hr {
 	margin: 24px 0 8px;
 }
 .prose p {
-	margin: 0;
+	margin: 0 0 1.1em;
 }
 .prose strong,
 .prose b {

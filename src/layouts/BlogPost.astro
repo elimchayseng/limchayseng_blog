@@ -17,6 +17,7 @@ const {
 	tags,
 	tag,
 	heroImage,
+	heroFrame,
 	resultLabel,
 	marginNotes,
 	stravaStats,
@@ -36,6 +37,7 @@ const filed: string[] = (() => {
 
 // Wide heroes (screenshots) fill the column with a frame; square/portrait art (e.g. the PRE mascot) sits centered and borderless.
 const heroWide = !!(heroImage && heroImage.width / heroImage.height > 1.3);
+const heroFramed = heroWide && heroFrame !== false;
 
 const hasMarginNotes = !!(marginNotes && marginNotes.length);
 const hasStrava = !!stravaStats;
@@ -101,7 +103,7 @@ const hasRightRail = hasMarginNotes || hasStrava;
 				<!-- CENTER BODY -->
 				<div class="body">
 					{heroImage && (
-						<figure class={`hero${heroWide ? ' framed' : ''}`}>
+						<figure class={`hero${heroWide ? ' wide' : ''}${heroFramed ? ' framed' : ''}`}>
 							<Image src={heroImage} alt={title} loading="eager" />
 						</figure>
 					)}
@@ -199,9 +201,11 @@ const hasRightRail = hasMarginNotes || hasStrava;
 			}
 			/* Wide screenshots fill the column and get a framed edge;
 			   square/transparent art (e.g. the PRE mascot) stays borderless. */
-			.hero.framed :global(img) {
+			.hero.wide :global(img) {
 				width: 100%;
 				max-height: none;
+			}
+			.hero.framed :global(img) {
 				border: 1px solid var(--paper-edge);
 				border-radius: 4px;
 			}

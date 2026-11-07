@@ -11,6 +11,8 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			// Set false to drop the border on wide hero images (e.g. stats cards that bring their own rules)
+			heroFrame: z.boolean().optional(),
 			tags: z.array(z.string()).optional(),
 			categories: z.array(z.string()).optional(),
 			draft: z.boolean().optional(),

@@ -1,5 +1,5 @@
 ---
-title: "Virtual NYC Marathon 2026 🎮"
+title: "Virtual NYC Marathon Race Recap 2026 🎮"
 pubDate: 2026-11-07 13:00:00
 tags: [marathon, endurance, race, running, nyc, sub-3]
 tag: Marathon
@@ -35,7 +35,7 @@ I looked at a few different routes, but settled on lapping the West Side Highway
 
 I woke up at 4:30am, ran a few warm-up blocks from a hotel in the Upper West Side over to the path, and at 5:15 just headed south. 
 
-There was a moderate headwind coming out of the south that felt totally fine on the first lap. I went all the way down to Battery Park City, flipped around and headed back north towards the GW Bridge. Some guy commuting to work with a backpack latched on to my pace (6:40ish) and stayed with me for about 4 mi.  
+There was a moderate headwind coming out of the south that felt totally fine on the first lap. I went all the way down to Battery Park City, flipped around and headed back north towards the GW Bridge. Some guy commuting to work with a backpack latched on to my pace (6:40ish) and stayed with me for about 4 mi. After that, a cyclist called me a "f***-ing idiot" when I went over into the bike lane (safely and with plenty of room) to avoid a run club cluster. Those two moments were the most eventful of the whole run honestly. 
 
 I made it up north, got a bottle handoff from Jenn on an E-bike since there were no fountains between mile 8-16. 
 
